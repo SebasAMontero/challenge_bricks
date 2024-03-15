@@ -20,7 +20,7 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Customer {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $CustomerCopyWith<$Res> {
       _$CustomerCopyWithImpl<$Res, Customer>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String name,
       String email,
       String image,
@@ -73,7 +73,7 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$CustomerImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String name,
       String email,
       String image,
@@ -148,7 +148,7 @@ class __$$CustomerImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -188,7 +188,7 @@ class _$CustomerImpl implements _Customer {
       _$$CustomerImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String name;
   @override
@@ -240,7 +240,7 @@ class _$CustomerImpl implements _Customer {
 
 abstract class _Customer implements Customer {
   const factory _Customer(
-      {required final String id,
+      {required final int id,
       required final String name,
       required final String email,
       required final String image,
@@ -251,7 +251,7 @@ abstract class _Customer implements Customer {
       _$CustomerImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get name;
   @override

@@ -6,7 +6,7 @@ part 'city.g.dart';
 @freezed
 class City with _$City {
   const factory City({
-    required String id,
+    required int id,
     required String name,
   }) = _City;
 

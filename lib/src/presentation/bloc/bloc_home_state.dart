@@ -5,11 +5,21 @@ part of 'bloc_home.dart';
 /// {@endtemplate}
 class BlocHomeState {
   /// {@macro BlocHomeState}
-  const BlocHomeState._();
+  const BlocHomeState._({
+    this.listCustomers = const [],
+  });
 
-  BlocHomeState.from() : this._();
+  BlocHomeState.from(
+    BlocHomeState otherState, {
+    List<Customer>? listCustomers,
+  }) : this._(listCustomers: listCustomers ?? otherState.listCustomers);
 
-  List<Object> get props => [];
+  List<Object> get props => [
+        listCustomers,
+      ];
+
+  /// List of customers
+  final List<Customer> listCustomers;
 }
 
 /// {@template BlocHomeStateInicial}
@@ -25,25 +35,24 @@ class BlocHomeStateInicial extends BlocHomeState {
 /// {@endtemplate}
 class BlocHomeStateLoading extends BlocHomeState {
   /// {@macro BlocHomeStateLoading}
-  BlocHomeStateLoading.from() : super.from();
+  BlocHomeStateLoading.from(super.otherState) : super.from();
 }
 
 /// {@template BlocHomeStateSuccess}
-/// Success state of the components of the HomePage 
+/// Success state of the components of the HomePage
 /// {@endtemplate}
 class BlocHomeStateSuccess extends BlocHomeState {
   /// {@macro BlocHomeStateSuccess}
-  BlocHomeStateSuccess.from() : super.from();
+  BlocHomeStateSuccess.from(
+    super.otherState, {
+    super.listCustomers,
+  }) : super.from();
 }
 
- 
-
 /// {@template BlocHomeStateError}
-/// Error state of the components of the HomePage 
+/// Error state of the components of the HomePage
 /// {@endtemplate}
 class BlocHomeStateError extends BlocHomeState {
   /// {@macro BlocHomeStateError}
-  BlocHomeStateError.from() : super.from();
+  BlocHomeStateError.from(super.otherState) : super.from();
 }
-
- 

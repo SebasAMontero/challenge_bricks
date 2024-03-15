@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
+import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
 import 'package:flutter/material.dart';
 
 /// {@template CustomerCard}
@@ -9,29 +10,20 @@ class CustomerCard extends StatelessWidget {
   /// {@macro CustomerCard}
   const CustomerCard({
     Key? key,
-    required this.clientName,
-    required this.clientEmail,
-    required this.clientCity,
-    required this.clientId,
+    required this.customer,
   }) : super(key: key);
 
-  final String clientName;
-
-  final String clientEmail;
-
-  final String clientCity;
-
-  final int clientId;
+  final Customer customer;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.router.push(
         CustomerDetailRoute(
-          idClient: clientId,
-          clientName: clientName,
-          clientEmail: clientEmail,
-          clientCity: clientCity,
+          idClient: customer.id,
+          clientName: customer.name,
+          clientEmail: customer.email,
+          clientCity: customer.city.name,
         ),
       ),
       child: Container(
@@ -51,8 +43,8 @@ class CustomerCard extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8),
                   child: Container(
-                    width: 70,
-                    height: 70,
+                    width: 60,
+                    height: 60,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 144, 97, 225),
                       border: Border.all(
@@ -60,7 +52,7 @@ class CustomerCard extends StatelessWidget {
                         width: 1.0,
                       ),
                     ),
-                    child: Center(child: Text(clientName[0])),
+                    child: Center(child: Text(customer.name[0])),
                   ),
                 ),
                 Column(
@@ -69,12 +61,12 @@ class CustomerCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Text(
-                        clientName,
+                        customer.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 15,
                         ),
                       ),
                     ),
@@ -82,13 +74,14 @@ class CustomerCard extends StatelessWidget {
                       height: 5,
                     ),
                     SizedBox(
+                      width: 210,
                       child: Text(
-                        clientEmail,
+                        customer.email,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 15,
                         ),
                       ),
                     ),
@@ -99,13 +92,14 @@ class CustomerCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
               child: SizedBox(
+                width: 70,
                 child: Text(
-                  clientCity,
-                  maxLines: 2,
+                  customer.city.name,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 15,
                   ),
                 ),
               ),

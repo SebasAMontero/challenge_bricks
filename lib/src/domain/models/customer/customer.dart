@@ -7,7 +7,7 @@ part 'customer.g.dart';
 @freezed
 class Customer with _$Customer {
   const factory Customer({
-    required String id,
+    required int id,
     required String name,
     required String email,
     required String image,

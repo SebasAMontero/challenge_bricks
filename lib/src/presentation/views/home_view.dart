@@ -64,13 +64,10 @@ class HomeView extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 8,
+                    itemCount: state.listCustomers.length,
                     itemBuilder: (context, index) {
                       return CustomerCard(
-                        clientName: 'User ${index + 1}',
-                        clientEmail: 'user${index + 1}@example.com',
-                        clientCity: 'City ${index + 1}',
-                        clientId: index + 1,
+                        customer: state.listCustomers[index],
                       );
                     },
                   ),
