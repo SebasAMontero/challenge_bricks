@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_flutter/src/app.dart';
+import 'package:bricks_app_flutter/src/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

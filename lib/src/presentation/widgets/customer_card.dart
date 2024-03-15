@@ -21,7 +21,7 @@ class CustomerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.11,
+      height: MediaQuery.of(context).size.height * 0.10,
       padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
@@ -60,7 +60,7 @@ class CustomerCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize:  20,
+                        fontSize: 20,
                       ),
                     ),
                   ),
@@ -74,7 +74,7 @@ class CustomerCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize:  20,
+                        fontSize: 20,
                       ),
                     ),
                   ),

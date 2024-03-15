@@ -4,7 +4,7 @@ part 'bloc_home_state.dart';
 part 'bloc_home_event.dart';
 
 /// {@template BlocHome}
-/// Bloc que maneja los estados y lógica de la pagina de 'Login'
+/// Handles the state and logic of the [HomePage]
 /// {@endtemplate}
 class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
   /// {@macro BlocHome}
@@ -14,12 +14,12 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     );
   }
 
-  /// Permite al usuario iniciar sesion con Email o DNI
+  /// Initializes data and adds it to the state.
   Future<void> _initialize(
     BlocHomeEventInitialize event,
     Emitter<BlocHomeState> emit,
   ) async {
     emit(BlocHomeStateLoading.from());
-    emit(BlocHomeStateSuccess.from());
+      emit(BlocHomeStateSuccess.from());
   }
 }

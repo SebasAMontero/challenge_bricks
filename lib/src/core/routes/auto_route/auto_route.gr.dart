@@ -9,11 +9,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:weather_app_flutter/src/presentation/pages/customer_details_page.dart'
+import 'package:bricks_app_flutter/src/presentation/pages/customer_details_page.dart'
     as _i1;
-import 'package:weather_app_flutter/src/presentation/pages/customer_form_page.dart'
+import 'package:bricks_app_flutter/src/presentation/pages/customer_form_page.dart'
     as _i2;
-import 'package:weather_app_flutter/src/presentation/pages/home_page.dart'
+import 'package:bricks_app_flutter/src/presentation/pages/home_page.dart'
     as _i3;
 
 abstract class $AppRouter extends _i4.RootStackRouter {

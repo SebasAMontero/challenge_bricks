@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:weather_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
+import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 
 // import 'package:escuelas_flutter/app/auto_route/router_guards.dart';
 // import 'package:escuelas_flutter/utilidades/utilidades.dart';

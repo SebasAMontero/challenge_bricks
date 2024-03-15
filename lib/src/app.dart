@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:weather_app_flutter/src/core/routes/auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

@@ -6,8 +6,4 @@ class Assets {
   static const String night = 'assets/images/night.png';
   static const String rainIcon = 'assets/images/rain_icon.png';
   static const String sunny = 'assets/images/sunny.png';
-  static const String lottieCloud = 'assets/lottie/cloud.json';
-  static const String lottieRain = 'assets/lottie/rain.json';
-  static const String lottieSunny = 'assets/lottie/sunny.json';
-  static const String lottieThunder = 'assets/lottie/thunder.json';
 }
