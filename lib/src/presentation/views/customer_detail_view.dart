@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:flutter/material.dart';
 
 class CustomerDetailView extends StatelessWidget {
@@ -60,7 +62,10 @@ class CustomerDetailView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => {}, // TODO(SAM): DELETE
+              // TODO(SAM): DELETE
+              onPressed: () => {
+                context.router.push(const HomeRoute()),
+              },
               child: const Text('Delete User'),
             ),
           ],
