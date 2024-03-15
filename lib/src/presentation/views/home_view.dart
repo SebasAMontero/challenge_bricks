@@ -12,74 +12,77 @@ class HomeView extends StatelessWidget {
 // TODO(SAM): add constant strings
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BlocHome, BlocHomeState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        if (state is BlocHomeStateLoading) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.deepPurple,
-            ),
-          );
-        }
-        if (state is BlocHomeStateError) {
-          return const Center(
-            child: Text(
-              'An error occurred fetching data.',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w600,
+    return SafeArea(
+      child: BlocConsumer<BlocHome, BlocHomeState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          if (state is BlocHomeStateLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.deepPurple,
               ),
-            ),
-          );
-        }
-        return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.23,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 144, 97, 225),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1.0,
-                  ),
+            );
+          }
+          if (state is BlocHomeStateError) {
+            return const Center(
+              child: Text(
+                'An error occurred fetching data.',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w600,
                 ),
-                child: const Center(
-                  child: Text(
-                    '20',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w600,
+              ),
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.23,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 144, 97, 225),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      '20',
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 8,
-                  itemBuilder: (context, index) {
-                    return CustomerCard(
-                      clientName: 'User ${index + 1}',
-                      clientEmail: 'user${index + 1}@example.com',
-                      clientCity: 'City ${index + 1}',
-                    );
-                  },
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
-          ),
-        );
-      },
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 8,
+                    itemBuilder: (context, index) {
+                      return CustomerCard(
+                        clientName: 'User ${index + 1}',
+                        clientEmail: 'user${index + 1}@example.com',
+                        clientCity: 'City ${index + 1}',
+                        clientId: index + 1,
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

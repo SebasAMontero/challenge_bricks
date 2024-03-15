@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/presentation/views/customer_form_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home.dart';
-import 'package:bricks_app_flutter/src/presentation/views/home_view.dart';
 
 /// {@template CustomerFormPage}
 /// Home page.
@@ -17,7 +17,7 @@ class CustomerFormPage extends StatelessWidget {
     return BlocProvider<BlocHome>(
       create: (context) => BlocHome(),
       child: const Scaffold(
-        body: HomeView(),
+        body: CustomerFormView(),
       ),
     );
   }

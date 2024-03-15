@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:flutter/material.dart';
 
 /// {@template CustomerCard}
@@ -10,6 +12,7 @@ class CustomerCard extends StatelessWidget {
     required this.clientName,
     required this.clientEmail,
     required this.clientCity,
+    required this.clientId,
   }) : super(key: key);
 
   final String clientName;
@@ -18,85 +21,97 @@ class CustomerCard extends StatelessWidget {
 
   final String clientCity;
 
+  final int clientId;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.10,
-      padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 2.0),
+    return GestureDetector(
+      onTap: () => context.router.push(
+        CustomerDetailRoute(
+          idClient: clientId,
+          clientName: clientName,
+          clientEmail: clientEmail,
+          clientCity: clientCity,
+        ),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8),
-                child: Container(
-                  width: 70,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 144, 97, 225),
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1.0,
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.11,
+        padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 2.0),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8),
+                  child: Container(
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 144, 97, 225),
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 1.0,
+                      ),
                     ),
+                    child: Center(child: Text(clientName[0])),
                   ),
-                  child: Center(child: Text(clientName[0])),
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    child: Text(
-                      clientName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      child: Text(
+                        clientName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  SizedBox(
-                    child: Text(
-                      clientEmail,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      child: Text(
+                        clientEmail,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 5.0),
+              child: SizedBox(
+                child: Text(
+                  clientCity,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                ],
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 5.0),
-            child: SizedBox(
-              child: Text(
-                clientCity,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

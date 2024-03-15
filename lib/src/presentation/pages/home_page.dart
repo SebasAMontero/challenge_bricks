@@ -18,13 +18,11 @@ class HomePage extends StatelessWidget {
     // TODO(SAM): add constant strings
     return BlocProvider<BlocHome>(
       create: (context) => BlocHome()..add(const BlocHomeEventInitialize()),
-      child: const SafeArea(
-        child: Scaffold(
-          appBar: BricksAppBar(
-            title: 'Clientes',
-          ),
-          body: HomeView(),
+      child: const Scaffold(
+        appBar: BricksAppBar(
+          title: 'Clientes',
         ),
+        body: HomeView(),
       ),
     );
   }

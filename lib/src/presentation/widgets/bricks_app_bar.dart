@@ -37,7 +37,7 @@ class BricksAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: const Icon(
                 Icons.add_circle_outline,
                 color: Colors.blue,
-                size: 25,
+                size: 30,
               ),
             ),
           ),
