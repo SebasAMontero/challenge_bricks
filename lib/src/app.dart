@@ -35,6 +35,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      color: const Color.fromARGB(255, 183, 183, 183),
       routerDelegate: AutoRouterDelegate(
         appRouter,
       ),

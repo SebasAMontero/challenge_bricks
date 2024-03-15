@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 
 part 'bloc_home_state.dart';
-part 'bloc_login_event.dart';
+part 'bloc_home_event.dart';
 
 /// {@template BlocHome}
 /// Bloc que maneja los estados y lógica de la pagina de 'Login'
@@ -19,6 +19,7 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     BlocHomeEventInitialize event,
     Emitter<BlocHomeState> emit,
   ) async {
-    emit(BlocHomeStateLoading.desde());
+    emit(BlocHomeStateLoading.from());
+    emit(BlocHomeStateSuccess.from());
   }
 }

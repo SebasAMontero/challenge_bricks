@@ -1,4 +1,4 @@
-part of 'bloc_login.dart';
+part of 'bloc_home.dart';
 
 /// {@template BlocHomeEvent}
 /// Events for the [BlocHome]

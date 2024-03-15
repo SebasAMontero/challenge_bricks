@@ -1,4 +1,4 @@
-part of 'bloc_login.dart';
+part of 'bloc_home.dart';
 
 /// {@template BlocHomeState}
 /// Handles the different states and variables in BlocHome.
@@ -7,7 +7,7 @@ class BlocHomeState {
   /// {@macro BlocHomeState}
   const BlocHomeState._();
 
-  BlocHomeState.desde() : this._();
+  BlocHomeState.from() : this._();
 
   List<Object> get props => [];
 }
@@ -25,7 +25,7 @@ class BlocHomeStateInicial extends BlocHomeState {
 /// {@endtemplate}
 class BlocHomeStateLoading extends BlocHomeState {
   /// {@macro BlocHomeStateLoading}
-  BlocHomeStateLoading.desde() : super.desde();
+  BlocHomeStateLoading.from() : super.from();
 }
 
 /// {@template BlocHomeStateSuccess}
@@ -33,7 +33,7 @@ class BlocHomeStateLoading extends BlocHomeState {
 /// {@endtemplate}
 class BlocHomeStateSuccess extends BlocHomeState {
   /// {@macro BlocHomeStateSuccess}
-  BlocHomeStateSuccess.desde() : super.desde();
+  BlocHomeStateSuccess.from() : super.from();
 }
 
  
@@ -43,7 +43,7 @@ class BlocHomeStateSuccess extends BlocHomeState {
 /// {@endtemplate}
 class BlocHomeStateError extends BlocHomeState {
   /// {@macro BlocHomeStateError}
-  BlocHomeStateError.desde() : super.desde();
+  BlocHomeStateError.from() : super.from();
 }
 
  
