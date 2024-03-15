@@ -1,1 +1,1 @@
- 
+bricks_app_flutter
