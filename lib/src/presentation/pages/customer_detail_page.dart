@@ -3,7 +3,7 @@ import 'package:bricks_app_flutter/src/presentation/views/customer_detail_view.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home.dart';
+import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
 
 /// {@template CustomerDetailPage}
 /// Home page.
@@ -32,6 +32,7 @@ class CustomerDetailPage extends StatelessWidget {
     return BlocProvider<BlocHome>(
       create: (context) => BlocHome(),
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(237, 241, 240, 240),
         body: CustomerDetailView(
           clientName: clientName,
           clientEmail: clientEmail,

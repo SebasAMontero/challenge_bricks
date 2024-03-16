@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home.dart';
+import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/customer_card.dart';
 
 /// {@template HomeView}
@@ -13,8 +13,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocConsumer<BlocHome, BlocHomeState>(
-        listener: (context, state) {},
+      child: BlocBuilder<BlocHome, BlocHomeState>(
         builder: (context, state) {
           if (state is BlocHomeStateLoading) {
             return const Center(
