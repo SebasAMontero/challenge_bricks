@@ -42,6 +42,7 @@ class CustomerCard extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8),
+                      // TODO(SAM): Add hero animation
                   child: Container(
                     width: 60,
                     height: 60,
