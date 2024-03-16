@@ -8,7 +8,7 @@ part 'bloc_home_state.dart';
 part 'bloc_home_event.dart';
 
 /// {@template BlocHome}
-/// Handles the state and logic of the HomePage  
+/// Handles the state and logic of the HomePage
 /// {@endtemplate}
 class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
   /// {@macro BlocHome}
@@ -34,14 +34,22 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
 
     final CustomerRepository customerRepository =
         CustomerRepository(customerDataSource: customerDataSource);
+    try {
+      final listCustomers = await customerRepository.fetchCustomersByPage();
 
-    final listCustomers = await customerRepository.fetchCustomersByPage();
-
-    emit(
-      BlocHomeStateSuccess.from(
-        state,
-        listCustomers: listCustomers,
-      ),
-    );
+      emit(
+        BlocHomeStateSuccess.from(
+          state,
+          listCustomers: listCustomers,
+        ),
+      );
+    } catch (error) {
+      emit(
+        BlocHomeStateError.from(
+          state,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }

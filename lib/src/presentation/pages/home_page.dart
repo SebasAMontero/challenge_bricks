@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +16,6 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    // TODO(SAM): add constant strings
     return BlocProvider<BlocHome>(
       create: (context) => BlocHome()
         ..add(
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         ),
       child: const Scaffold(
         appBar: BricksAppBar(
-          title: 'Clientes',
+          title: Strings.homePageAppBarTitle,
         ),
         body: HomeView(),
         backgroundColor: Color.fromARGB(237, 241, 240, 240),

@@ -54,5 +54,10 @@ class BlocCustomerDetailStateSuccess extends BlocCustomerDetailState {
 /// {@endtemplate}
 class BlocCustomerDetailStateError extends BlocCustomerDetailState {
   /// {@macro BlocCustomerDetailStateError}
-  BlocCustomerDetailStateError.from(super.otherState) : super.from();
+  BlocCustomerDetailStateError.from(
+    super.otherState, {
+    required this.errorMessage,
+  }) : super.from();
+
+  final String errorMessage;
 }

@@ -54,5 +54,10 @@ class BlocHomeStateSuccess extends BlocHomeState {
 /// {@endtemplate}
 class BlocHomeStateError extends BlocHomeState {
   /// {@macro BlocHomeStateError}
-  BlocHomeStateError.from(super.otherState) : super.from();
+  BlocHomeStateError.from(
+    super.otherState, {
+    required this.errorMessage,
+  }) : super.from();
+
+  final String errorMessage;
 }

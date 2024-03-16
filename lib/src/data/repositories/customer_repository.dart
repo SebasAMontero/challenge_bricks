@@ -14,4 +14,18 @@ class CustomerRepository {
 
     return customer;
   }
+
+  Future<Customer> postCustomer({
+    required String name,
+    required String email,
+    required int cityId,
+  }) async {
+    final customer = await _customerDataSource.postCustomer(
+      name: name,
+      email: email,
+      cityId: cityId,
+    );
+
+    return customer;
+  }
 }

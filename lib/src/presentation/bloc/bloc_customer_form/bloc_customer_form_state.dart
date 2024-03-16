@@ -7,12 +7,17 @@ class BlocCustomerFormState {
   /// {@macro BlocCustomerFormState}
   const BlocCustomerFormState._({
     this.listCities = const [],
+    this.createdCustomer,
   });
 
   BlocCustomerFormState.from(
     BlocCustomerFormState otherState, {
     List<City>? listCities,
-  }) : this._(listCities: listCities ?? otherState.listCities);
+    Customer? createdCustomer,
+  }) : this._(
+          listCities: listCities ?? otherState.listCities,
+          createdCustomer: createdCustomer ?? otherState.createdCustomer,
+        );
 
   List<Object> get props => [
         listCities,
@@ -20,6 +25,9 @@ class BlocCustomerFormState {
 
   /// List of customers
   final List<City> listCities;
+
+  /// Recently created customer.
+  final Customer? createdCustomer;
 }
 
 /// {@template BlocCustomerFormStateInicial}
@@ -46,6 +54,19 @@ class BlocCustomerFormStateSuccess extends BlocCustomerFormState {
   BlocCustomerFormStateSuccess.from(
     super.otherState, {
     super.listCities,
+    super.createdCustomer,
+  }) : super.from();
+}
+
+/// {@template BlocCustomerFormStateSubmitCustomerSuccess}
+/// Success state of the components of the CustomerFormPage
+/// {@endtemplate}
+class BlocCustomerFormStateSubmitCustomerSuccess extends BlocCustomerFormState {
+  /// {@macro BlocCustomerFormStateSubmitCustomerSuccess}
+  BlocCustomerFormStateSubmitCustomerSuccess.from(
+    super.otherState, {
+    super.listCities,
+    super.createdCustomer,
   }) : super.from();
 }
 
@@ -54,5 +75,9 @@ class BlocCustomerFormStateSuccess extends BlocCustomerFormState {
 /// {@endtemplate}
 class BlocCustomerFormStateError extends BlocCustomerFormState {
   /// {@macro BlocCustomerFormStateError}
-  BlocCustomerFormStateError.from(super.otherState) : super.from();
+  BlocCustomerFormStateError.from(
+    super.otherState, {
+    required this.errorMessage,
+  }) : super.from();
+  final String errorMessage;
 }

@@ -37,16 +37,24 @@ class BlocCustomerDetail
         CityRepository(cityDataSource: cityDataSource);
     final CustomerRepository customerRepository =
         CustomerRepository(customerDataSource: customerDataSource);
+    try {
+      final listCities = await cityRepository.fetchCities();
 
-    final listCities = await cityRepository.fetchCities();
+      final listCustomers = await customerRepository.fetchCustomersByPage();
 
-    final listCustomers = await customerRepository.fetchCustomersByPage();
-
-    emit(
-      BlocCustomerDetailStateSuccess.from(
-        state,
-        listCustomers: listCustomers,
-      ),
-    );
+      emit(
+        BlocCustomerDetailStateSuccess.from(
+          state,
+          listCustomers: listCustomers,
+        ),
+      );
+    } catch (error) {
+      emit(
+        BlocCustomerDetailStateError.from(
+          state,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }

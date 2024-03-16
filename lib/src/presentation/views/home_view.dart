@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
@@ -25,7 +26,7 @@ class HomeView extends StatelessWidget {
           if (state is BlocHomeStateError) {
             return const Center(
               child: Text(
-                'An error occurred fetching data.',
+                Strings.errorFetchingData,
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
@@ -49,7 +50,8 @@ class HomeView extends StatelessWidget {
                   ),
                   child: const Center(
                     child: Text(
-                      '20',
+                      // TODO(SAM):Add total de clientes
+                      '20', 
                       style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.w600,
