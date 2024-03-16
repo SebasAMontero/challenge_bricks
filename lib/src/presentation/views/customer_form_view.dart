@@ -40,6 +40,53 @@ class _CustomerFormViewState extends State<CustomerFormView> {
     super.dispose();
   }
 
+// TODO(SAM): String constants and extract widgets.
+  /// Validates if the user typed a valid email, it must contain @.
+  String? _validateEmailInput(String? email) {
+    if (email == null || email.isEmpty) {
+      return 'Please enter an email address';
+    }
+    final bool emailValid =
+        RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$').hasMatch(email);
+
+    if (!emailValid) {
+      return 'Please enter a valid email address';
+    }
+
+    return null;
+  }
+
+  /// Validates if the user typed a valid name, it must be at least 3 characters long.
+  String? _validateNameInput(String? name) {
+    if (name == null || name.length < 3) {
+      return 'Name should be at least 3 characters long';
+    }
+    return null;
+  }
+
+  /// Validates if the user selected a city.
+  String? _validateCityInput(String? city) {
+    if (city == null || city.isEmpty) {
+      return 'Please select a city';
+    }
+    return null;
+  }
+
+  /// Submits the form, adding the event Submit Customer prior to a validation.
+  void _submitForm() {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    context.read<BlocCustomerForm>().add(
+          BlocCustomerFormEventSubmitCustomer(
+            name: _controllerName.text,
+            email: _controllerEmail.text,
+            cityId: cityId,
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -76,7 +123,21 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 60.0,
+                    height: 20.0,
+                  ),
+                  const SizedBox(
+                    child: Center(
+                      child: Text(
+                        'Please fill customer details',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20.0,
                   ),
                   Row(
                     children: [
@@ -92,6 +153,8 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                           decoration: const InputDecoration(
                             labelText: Strings.labelTextName,
                           ),
+                          validator: _validateNameInput,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
                       ),
                     ],
@@ -112,6 +175,8 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                           decoration: const InputDecoration(
                             labelText: Strings.labelTextEmail,
                           ),
+                          validator: _validateEmailInput,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
                       ),
                     ],
@@ -143,6 +208,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                               )
                               .toList(),
                           onChanged: (String? value) {},
+                          validator: _validateCityInput,
                         ),
                       ),
                     ],
@@ -151,13 +217,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                   Center(
                     child: BricksButton(
                       onTap: () {
-                        context.read<BlocCustomerForm>().add(
-                              BlocCustomerFormEventSubmitCustomer(
-                                name: _controllerName.text,
-                                email: _controllerEmail.text,
-                                cityId: cityId,
-                              ),
-                            );
+                        _submitForm();
                       },
                       title: Strings.submitCustomer,
                       isEnabled: true,
