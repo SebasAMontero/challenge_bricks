@@ -9,8 +9,10 @@ import 'package:bricks_app_flutter/src/presentation/widgets/customer_card.dart';
 /// {@endtemplate}
 class HomeView extends StatelessWidget {
   /// {@macro HomeView}
-  const HomeView({super.key});
-// TODO(SAM): add constant strings
+  const HomeView({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,6 +41,7 @@ class HomeView extends StatelessWidget {
             child: Column(
               children: [
                 Container(
+                  // TODO(SAM):Extract variables
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: MediaQuery.of(context).size.height * 0.23,
                   decoration: BoxDecoration(
@@ -50,8 +53,8 @@ class HomeView extends StatelessWidget {
                   ),
                   child: const Center(
                     child: Text(
-                      // TODO(SAM):Add total de clientes
-                      '20', 
+                      // TODO(SAM):Add total de clientes customercounter endpoint
+                      '20',
                       style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.w600,

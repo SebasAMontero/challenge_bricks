@@ -9,6 +9,7 @@ class CityRepository {
   final ICityDataSource _cityDataSource;
 
   Future<List<City>> fetchCities() async {
+    
     final listCities = await _cityDataSource.fetchCities();
 
     return listCities;

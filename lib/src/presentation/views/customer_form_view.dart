@@ -3,6 +3,7 @@ import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_customer_form/bloc_customer_form.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/bricks_button.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,17 +41,17 @@ class _CustomerFormViewState extends State<CustomerFormView> {
     super.dispose();
   }
 
-// TODO(SAM): String constants and extract widgets.
-  /// Validates if the user typed a valid email, it must contain @.
+// TODO(SAM): Extract widgets.
+  /// Validates if the user typed a valid email.
   String? _validateEmailInput(String? email) {
     if (email == null || email.isEmpty) {
-      return 'Please enter an email address';
+      return Strings.validateEmailEmptyErrorMessage;
     }
     final bool emailValid =
         RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$').hasMatch(email);
 
     if (!emailValid) {
-      return 'Please enter a valid email address';
+      return Strings.validateEmailErrorMessage;
     }
 
     return null;
@@ -59,7 +60,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
   /// Validates if the user typed a valid name, it must be at least 3 characters long.
   String? _validateNameInput(String? name) {
     if (name == null || name.length < 3) {
-      return 'Name should be at least 3 characters long';
+      return Strings.validateNameErrorMessage;
     }
     return null;
   }
@@ -67,7 +68,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
   /// Validates if the user selected a city.
   String? _validateCityInput(String? city) {
     if (city == null || city.isEmpty) {
-      return 'Please select a city';
+      return Strings.validateCityErrorMessage;
     }
     return null;
   }
@@ -123,12 +124,12 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   const SizedBox(
                     child: Center(
                       child: Text(
-                        'Please fill customer details',
+                        Strings.customerFormViewTitle,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
@@ -139,47 +140,18 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(right: 8.0),
-                        child: Icon(
-                          Icons.person_outline,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          controller: _controllerName,
-                          decoration: const InputDecoration(
-                            labelText: Strings.labelTextName,
-                          ),
-                          validator: _validateNameInput,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                        ),
-                      ),
-                    ],
+                  BricksTextFormField(
+                    controller: _controllerName,
+                    validator: _validateNameInput,
+                    iconData: Icons.person_outline,
+                    labelText: Strings.labelTextName,
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(right: 8.0),
-                        child: Icon(
-                          Icons.email_outlined,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          controller: _controllerEmail,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: const InputDecoration(
-                            labelText: Strings.labelTextEmail,
-                          ),
-                          validator: _validateEmailInput,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                        ),
-                      ),
-                    ],
+                  BricksTextFormField(
+                    controller: _controllerEmail,
+                    validator: _validateEmailInput,
+                    iconData: Icons.email_outlined,
+                    labelText: Strings.labelTextEmail,
                   ),
                   const SizedBox(height: 20),
                   Row(
@@ -213,7 +185,8 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const Spacer(),
+                  // TODO(SAM): Add singlechildscroll
                   Center(
                     child: BricksButton(
                       onTap: () {
@@ -223,6 +196,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                       isEnabled: true,
                     ),
                   ),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),

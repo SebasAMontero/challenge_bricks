@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -33,17 +32,16 @@ Future<void> bootstrap(
   String? hostUrl,
   String? entorno,
 }) async {
+  WidgetsFlutterBinding.ensureInitialized();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
   Bloc.observer = const AppBlocObserver();
 
-  WidgetsFlutterBinding.ensureInitialized();
-
   final CustomerDataSource customerDataSource = CustomerDataSource();
   final CityDataSource cityDataSource = CityDataSource();
- // todo(sam): add provider? 
+  // todo(sam): add provider?
   final CityRepository cityRepository =
       CityRepository(cityDataSource: cityDataSource);
   final CustomerRepository customerRepository =

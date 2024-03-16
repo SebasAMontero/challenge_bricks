@@ -13,7 +13,6 @@ class AppRouter extends $AppRouter {
 
   @override
   List<AutoRoute> get routes => [
-        // TODO(SAM): Check nesteo rutas.
         AutoRoute(
           page: HomeRoute.page,
           path: '/home',

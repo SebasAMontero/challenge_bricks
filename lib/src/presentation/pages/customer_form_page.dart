@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CustomerFormPage extends StatelessWidget {
   /// {@macro CustomerFormPage}
   const CustomerFormPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BlocCustomerForm>(
@@ -20,7 +21,7 @@ class CustomerFormPage extends StatelessWidget {
         ),
       child: const Scaffold(
         body: CustomerFormView(),
-          backgroundColor: Color.fromARGB(237, 241, 240, 240),
+        backgroundColor: Color.fromARGB(237, 241, 240, 240),
       ),
     );
   }

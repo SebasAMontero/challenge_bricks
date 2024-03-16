@@ -8,11 +8,12 @@ import '../../constants/strings.dart';
 
 class CustomerDataSource implements ICustomerDataSource {
   final Client client = Client();
-  static const int pageItemSize = 20;
+  static const int pageItemSize = 30;
 
   @override
   Future<List<Customer>> fetchCustomers() async {
 // TODO(SAM): Add pagination
+//  siguiente pagina fetch
     final response = await client.get(
       Uri.parse(
         '${Strings.baseUrl}${Strings.customerEndpoint}?page=0&size=$pageItemSize',
@@ -20,7 +21,9 @@ class CustomerDataSource implements ICustomerDataSource {
     );
 
     if (response.statusCode == 200) {
-      final List<dynamic> customersJsonList = json.decode(response.body);
+      final String responseBody = utf8.decode(response.bodyBytes);
+
+      final List<dynamic> customersJsonList = json.decode(responseBody);
       List<Customer> customers =
           customersJsonList.map((json) => Customer.fromJson(json)).toList();
       return customers;

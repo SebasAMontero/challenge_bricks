@@ -15,14 +15,12 @@ part 'bloc_customer_form_event.dart';
 class BlocCustomerForm
     extends Bloc<BlocCustomerFormEvent, BlocCustomerFormState> {
   /// {@macro BlocCustomerForm}
-  BlocCustomerForm({this.getCustomerRepository, this.getCityRepository})
-      : super(const BlocCustomerFormStateInicial()) {
-    on<BlocCustomerFormEventInitialize>(
-      _initializeCities,
-    );
-    on<BlocCustomerFormEventSubmitCustomer>(
-      _submitCustomer,
-    );
+  BlocCustomerForm({
+    this.getCustomerRepository,
+    this.getCityRepository,
+  }) : super(const BlocCustomerFormStateInicial()) {
+    on<BlocCustomerFormEventInitialize>(_initializeCities);
+    on<BlocCustomerFormEventSubmitCustomer>(_submitCustomer);
   }
   final CustomerRepository? getCustomerRepository;
   final CityRepository? getCityRepository;

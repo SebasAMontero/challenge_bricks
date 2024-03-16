@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BricksButton extends StatelessWidget {
-  const BricksButton(
-      {super.key,
-      required this.onTap,
-      required this.title,
-      this.isEnabled = true});
+  const BricksButton({
+    super.key,
+    required this.onTap,
+    required this.title,
+    this.isEnabled = true,
+  });
 
   /// Function that is called when the button is pressed.
   final VoidCallback onTap;
@@ -23,13 +24,27 @@ class BricksButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: isEnabled ? Colors.purpleAccent : Colors.grey,
           borderRadius: BorderRadius.circular(100),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 4,
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
           border: Border.all(
-            width: 1,
+            width: 1.5,
           ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(title),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 20,
+            ),
+          ),
         ),
       ),
     );

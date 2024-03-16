@@ -22,6 +22,24 @@ class Strings {
   /// Label text used in texformfields
   static const String labelTextCity = 'City';
 
-   /// Used in the customer form view to submit a customer.
+  /// Used in the customer form view to submit a customer.
   static const String submitCustomer = 'Submit Customer';
+
+  /// Validation error message for name input.
+  static const String validateNameErrorMessage =
+      'Name should be at least 3 characters long';
+
+  /// Validation error message for email input.
+  static const String validateEmailErrorMessage =
+      'Please enter a valid email address';
+
+  /// Validation error message for email input when the field is empty.
+  static const String validateEmailEmptyErrorMessage =
+      'Please enter an email address';
+
+  /// Validation error message for city input.
+  static const String validateCityErrorMessage = 'Please select a city';
+
+  /// Title of the view Customer Form.
+  static const String customerFormViewTitle = 'Please fill customer details';
 }

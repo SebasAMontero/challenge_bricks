@@ -12,7 +12,7 @@ class App extends StatelessWidget {
 }
 
 /// {@template AppView}
-/// Es la estructura general de la aplicación.También
+/// Es la estructura general de la aplicación. También
 /// inicializa `AppRouter` para fines de manejo de rutas/routes.
 /// {@endtemplate}
 class AppView extends StatefulWidget {
@@ -40,7 +40,9 @@ class _AppViewState extends State<AppView> {
         appRouter,
       ),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
