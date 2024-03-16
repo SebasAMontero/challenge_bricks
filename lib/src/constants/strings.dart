@@ -13,7 +13,6 @@ class Strings {
 
   /// 'Clientes'
   static const String homePageCustomerCount = 'Customer count: ';
-  
 
   /// Used in error States of Bloc.
   static const String errorFetchingData = 'An error occurred fetching data.';
@@ -47,4 +46,16 @@ class Strings {
 
   /// Title of the view Customer Form.
   static const String customerFormViewTitle = 'Please fill customer details';
+
+  /// Prefix for the Name label in the view Customer Detail
+  static const String customerDetailNamePrefix = 'Name: ';
+
+  /// Prefix for the Email label in the view Customer Detail
+  static const String customerDetailEmailPrefix = 'Email: ';
+
+  /// Prefix for the City label in the view Customer Detail
+  static const String customerDetailCityPrefix = 'City: ';
+
+  /// Text for the delete user button in the view Customer Detail
+  static const String customerDetailDeleteUserButtonText = 'Delete User';
 }

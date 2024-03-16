@@ -6,20 +6,22 @@ part of 'bloc_customer_detail.dart';
 class BlocCustomerDetailState {
   /// {@macro BlocCustomerDetailState}
   const BlocCustomerDetailState._({
-    this.listCustomers = const [],
+    this.customer,
   });
 
   BlocCustomerDetailState.from(
     BlocCustomerDetailState otherState, {
-    List<Customer>? listCustomers,
-  }) : this._(listCustomers: listCustomers ?? otherState.listCustomers);
+    Customer? customer,
+  }) : this._(
+          customer: customer ?? otherState.customer,
+        );
 
-  List<Object> get props => [
-        listCustomers,
+  List<Object?> get props => [
+        customer,
       ];
 
-  /// List of customers
-  final List<Customer> listCustomers;
+  /// Customer
+  final Customer? customer;
 }
 
 /// {@template BlocCustomerDetailStateInicial}
@@ -45,8 +47,19 @@ class BlocCustomerDetailStateSuccess extends BlocCustomerDetailState {
   /// {@macro BlocCustomerDetailStateSuccess}
   BlocCustomerDetailStateSuccess.from(
     super.otherState, {
-    super.listCustomers,
+    super.customer,
   }) : super.from();
+}
+
+/// {@template BlocCustomerDetailStateDeletedCustomerSuccess}
+/// Success state of the components of the CustomerDetailPage, when the Customer is deleted.
+/// {@endtemplate}
+class BlocCustomerDetailStateDeletedCustomerSuccess
+    extends BlocCustomerDetailState {
+  /// {@macro BlocCustomerDetailStateDeletedCustomerSuccess}
+  BlocCustomerDetailStateDeletedCustomerSuccess.from(
+    super.otherState,
+  ) : super.from();
 }
 
 /// {@template BlocCustomerDetailStateError}

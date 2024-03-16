@@ -36,4 +36,18 @@ class CustomerRepository {
     final customerCounter = await _customerDataSource.fetchCustomerCount();
     return customerCounter;
   }
+
+  /// Returns the number of customers in the database
+  Future<Customer> fetchCustomerById({required idCustomer}) async {
+    final customer =
+        await _customerDataSource.fetchCustomerById(idCustomer: idCustomer);
+    return customer;
+  }
+
+  /// Returns the number of customers in the database
+  Future<bool> deleteCustomerById({required idCustomer}) async {
+    final isDeleted =
+        await _customerDataSource.deleteCustomerById(idCustomer: idCustomer);
+    return isDeleted;
+  }
 }

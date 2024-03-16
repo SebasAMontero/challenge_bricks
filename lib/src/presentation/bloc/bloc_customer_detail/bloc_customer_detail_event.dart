@@ -13,5 +13,17 @@ abstract class BlocCustomerDetailEvent {
 /// {@endtemplate}
 class BlocCustomerDetailEventInitialize extends BlocCustomerDetailEvent {
   /// {@macro BlocCustomerDetailEventInitialize}
-  const BlocCustomerDetailEventInitialize();
+  const BlocCustomerDetailEventInitialize({required this.idCustomer});
+
+  final int idCustomer;
+}
+
+/// {@template BlocCustomerDetailEventDeleteCustomer}
+/// The event is called when the customer detail button is pressted to delete a user by its ID.
+/// {@endtemplate}
+class BlocCustomerDetailEventDeleteCustomer extends BlocCustomerDetailEvent {
+  /// {@macro BlocCustomerDetailEventDeleteCustomer}
+  const BlocCustomerDetailEventDeleteCustomer({required this.idCustomer});
+
+  final int idCustomer;
 }

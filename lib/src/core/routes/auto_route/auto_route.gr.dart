@@ -26,19 +26,12 @@ abstract class $AppRouter extends _i4.RootStackRouter {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<CustomerDetailRouteArgs>(
           orElse: () => CustomerDetailRouteArgs(
-                idClient: pathParams.getInt('clientName'),
-                clientName: pathParams.getString('clientName'),
-                clientEmail: pathParams.getString('clientEmail'),
-                clientCity: pathParams.getString('clientCity'),
-              ));
+              idCustomer: pathParams.getInt('idCostumer')));
       return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.CustomerDetailPage(
           key: args.key,
-          idClient: args.idClient,
-          clientName: args.clientName,
-          clientEmail: args.clientEmail,
-          clientCity: args.clientCity,
+          idCustomer: args.idCustomer,
         ),
       );
     },
@@ -62,25 +55,15 @@ abstract class $AppRouter extends _i4.RootStackRouter {
 class CustomerDetailRoute extends _i4.PageRouteInfo<CustomerDetailRouteArgs> {
   CustomerDetailRoute({
     _i5.Key? key,
-    required int idClient,
-    required String clientName,
-    required String clientEmail,
-    required String clientCity,
+    required int idCustomer,
     List<_i4.PageRouteInfo>? children,
   }) : super(
           CustomerDetailRoute.name,
           args: CustomerDetailRouteArgs(
             key: key,
-            idClient: idClient,
-            clientName: clientName,
-            clientEmail: clientEmail,
-            clientCity: clientCity,
+            idCustomer: idCustomer,
           ),
-          rawPathParams: {
-            'clientName': clientName,
-            'clientEmail': clientEmail,
-            'clientCity': clientCity,
-          },
+          rawPathParams: {'idCostumer': idCustomer},
           initialChildren: children,
         );
 
@@ -93,25 +76,16 @@ class CustomerDetailRoute extends _i4.PageRouteInfo<CustomerDetailRouteArgs> {
 class CustomerDetailRouteArgs {
   const CustomerDetailRouteArgs({
     this.key,
-    required this.idClient,
-    required this.clientName,
-    required this.clientEmail,
-    required this.clientCity,
+    required this.idCustomer,
   });
 
   final _i5.Key? key;
 
-  final int idClient;
-
-  final String clientName;
-
-  final String clientEmail;
-
-  final String clientCity;
+  final int idCustomer;
 
   @override
   String toString() {
-    return 'CustomerDetailRouteArgs{key: $key, idClient: $idClient, clientName: $clientName, clientEmail: $clientEmail, clientCity: $clientCity}';
+    return 'CustomerDetailRouteArgs{key: $key, idCustomer: $idCustomer}';
   }
 }
 

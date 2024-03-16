@@ -15,6 +15,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final containerProportionalHeight =
+        MediaQuery.of(context).size.height * 0.23;
+
+    final containerProportionalWidth = MediaQuery.of(context).size.width * 0.9;
+
     return SafeArea(
       child: BlocBuilder<BlocHome, BlocHomeState>(
         builder: (context, state) {
@@ -41,9 +46,8 @@ class HomeView extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  // TODO(SAM):Extract variables
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  height: MediaQuery.of(context).size.height * 0.23,
+                  width: containerProportionalWidth,
+                  height: containerProportionalHeight,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 144, 97, 225),
                     border: Border.all(

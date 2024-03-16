@@ -18,7 +18,8 @@ class CityDataSource implements ICityDataSource {
     );
 
     if (response.statusCode == 200) {
-      final List<dynamic> cityJsonList = json.decode(response.body);
+      final String responseBody = utf8.decode(response.bodyBytes);
+      final List<dynamic> cityJsonList = json.decode(responseBody);
       List<City> cities =
           cityJsonList.map((json) => City.fromJson(json)).toList();
       return cities;

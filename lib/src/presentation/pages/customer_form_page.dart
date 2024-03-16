@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// {@template CustomerFormPage}
-/// Home page.
+/// Customer form page.
 /// {@endtemplate}
 @RoutePage()
 class CustomerFormPage extends StatelessWidget {

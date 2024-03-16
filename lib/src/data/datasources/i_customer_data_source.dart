@@ -7,6 +7,16 @@ abstract class ICustomerDataSource {
   /// Returns a [Future] that retrieves the number of customers in the Database.
   Future<int> fetchCustomerCount();
 
+  /// Returns a [Future] that retrieves a specific customer.
+  Future<Customer> fetchCustomerById({
+    required int idCustomer,
+  });
+
+  /// Deletes a customer from the database
+  Future<bool> deleteCustomerById({
+    required int idCustomer,
+  });
+
   /// Returns a [Future] that retrieves a [Customer] after it was successfully created.
   Future<Customer> postCustomer({
     required String name,

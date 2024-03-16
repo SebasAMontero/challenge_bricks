@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_avatar.dart';
 import 'package:flutter/material.dart';
 
 /// {@template CustomerCard}
@@ -17,17 +18,17 @@ class CustomerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double containerProportionalHeight =
+        MediaQuery.of(context).size.height * 0.11;
+
     return GestureDetector(
       onTap: () => context.router.push(
         CustomerDetailRoute(
-          idClient: customer.id,
-          clientName: customer.name,
-          clientEmail: customer.email,
-          clientCity: customer.city.name,
+          idCustomer: customer.id,
         ),
       ),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.11,
+        height: containerProportionalHeight,
         padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
@@ -42,18 +43,12 @@ class CustomerCard extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8),
-                      // TODO(SAM): Add hero animation
-                  child: Container(
+                  child: BricksAvatar(
+                    radius: 30,
+                    borderRadius: BorderRadius.zero,
+                    customerImageUrl: customer.image,
                     width: 60,
                     height: 60,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 144, 97, 225),
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1.0,
-                      ),
-                    ),
-                    child: Center(child: Text(customer.name[0])),
                   ),
                 ),
                 Column(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:bricks_app_flutter/src/data/datasources/i_customer_data_source.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
 import 'package:http/http.dart' show Client;
@@ -74,6 +73,45 @@ class CustomerDataSource implements ICustomerDataSource {
       final Map<String, dynamic> responseData = json.decode(response.body);
       final int customerCount = responseData['count'];
       return customerCount;
+    } else {
+      throw Exception(
+        'Error Fetching Data, Http Status Code == "${response.statusCode}"',
+      );
+    }
+  }
+
+  @override
+  Future<Customer> fetchCustomerById({
+    required idCustomer,
+  }) async {
+    final response = await client.get(
+      Uri.parse(
+        '${Strings.baseUrl}${Strings.customerEndpoint}/$idCustomer',
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final String responseBody = utf8.decode(response.bodyBytes);
+      final Map<String, dynamic> customerJson = json.decode(responseBody);
+      return Customer.fromJson(customerJson);
+    } else {
+      throw Exception(
+        'Error Fetching Data, Http Status Code == "${response.statusCode}"',
+      );
+    }
+  }
+
+  @override
+  Future<bool> deleteCustomerById({
+    required idCustomer,
+  }) async {
+    final response = await client.delete(
+      Uri.parse(
+        '${Strings.baseUrl}${Strings.customerEndpoint}/$idCustomer',
+      ),
+    );
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw Exception(
         'Error Fetching Data, Http Status Code == "${response.statusCode}"',
