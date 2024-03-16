@@ -75,7 +75,7 @@ class CustomerCard extends StatelessWidget {
                       height: 5,
                     ),
                     SizedBox(
-                      width: 210,
+                      width: 190,
                       child: Text(
                         customer.email,
                         maxLines: 1,
@@ -93,7 +93,7 @@ class CustomerCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 5.0),
               child: SizedBox(
-                width: 70,
+                width: 90,
                 child: Text(
                   customer.city.name,
                   maxLines: 1,

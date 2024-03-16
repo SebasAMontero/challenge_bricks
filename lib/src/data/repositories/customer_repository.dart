@@ -8,13 +8,15 @@ class CustomerRepository {
   }) : _customerDataSource = customerDataSource;
 
   final ICustomerDataSource _customerDataSource;
-
+  // todo(sam): add docu
+  ///
   Future<List<Customer>> fetchCustomersByPage() async {
     final customer = await _customerDataSource.fetchCustomers();
 
     return customer;
   }
 
+  /// Creates a customer and adds it to the database
   Future<Customer> postCustomer({
     required String name,
     required String email,
@@ -27,5 +29,11 @@ class CustomerRepository {
     );
 
     return customer;
+  }
+
+  /// Returns the number of customers in the database
+  Future<int> fetchCustomerCount() async {
+    final customerCounter = await _customerDataSource.fetchCustomerCount();
+    return customerCounter;
   }
 }

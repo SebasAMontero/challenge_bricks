@@ -5,10 +5,15 @@ class Strings {
   static const String appTitle = 'Bricks App';
   static const String baseUrl = 'https://api.develop.bricks.com.ar/tax/';
   static const String customerEndpoint = 'customer';
+  static const String customerCountEndpoint = 'customer/count';
   static const String cityEndpoint = 'city';
 
   /// 'Clientes'
   static const String homePageAppBarTitle = 'Clientes';
+
+  /// 'Clientes'
+  static const String homePageCustomerCount = 'Customer count: ';
+  
 
   /// Used in error States of Bloc.
   static const String errorFetchingData = 'An error occurred fetching data.';

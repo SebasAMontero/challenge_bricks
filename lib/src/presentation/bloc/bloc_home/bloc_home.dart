@@ -37,10 +37,13 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     try {
       final listCustomers = await customerRepository.fetchCustomersByPage();
 
+      final customerCount = await customerRepository.fetchCustomerCount();
+
       emit(
         BlocHomeStateSuccess.from(
           state,
           listCustomers: listCustomers,
+          customerCount: customerCount,
         ),
       );
     } catch (error) {

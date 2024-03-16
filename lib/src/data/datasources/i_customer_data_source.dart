@@ -4,6 +4,9 @@ abstract class ICustomerDataSource {
   /// Returns a [Future] that retrieves a paginated list of customers from the server.
   Future<List<Customer>> fetchCustomers();
 
+  /// Returns a [Future] that retrieves the number of customers in the Database.
+  Future<int> fetchCustomerCount();
+
   /// Returns a [Future] that retrieves a [Customer] after it was successfully created.
   Future<Customer> postCustomer({
     required String name,

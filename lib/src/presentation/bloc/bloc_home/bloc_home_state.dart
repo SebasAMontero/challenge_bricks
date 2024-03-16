@@ -7,19 +7,28 @@ class BlocHomeState {
   /// {@macro BlocHomeState}
   const BlocHomeState._({
     this.listCustomers = const [],
+    this.customerCount = 0,
   });
 
   BlocHomeState.from(
     BlocHomeState otherState, {
     List<Customer>? listCustomers,
-  }) : this._(listCustomers: listCustomers ?? otherState.listCustomers);
+    int? customerCount,
+  }) : this._(
+          listCustomers: listCustomers ?? otherState.listCustomers,
+          customerCount: customerCount ?? otherState.customerCount,
+        );
 
   List<Object> get props => [
         listCustomers,
+        customerCount,
       ];
 
   /// List of customers
   final List<Customer> listCustomers;
+
+  /// Total number of customers in the database
+  final int customerCount;
 }
 
 /// {@template BlocHomeStateInicial}
@@ -46,6 +55,7 @@ class BlocHomeStateSuccess extends BlocHomeState {
   BlocHomeStateSuccess.from(
     super.otherState, {
     super.listCustomers,
+    super.customerCount,
   }) : super.from();
 }
 

@@ -61,4 +61,23 @@ class CustomerDataSource implements ICustomerDataSource {
           'Failed to create customer. Status code: ${response.statusCode}');
     }
   }
+
+  @override
+  Future<int> fetchCustomerCount() async {
+    final response = await client.get(
+      Uri.parse(
+        '${Strings.baseUrl}${Strings.customerCountEndpoint}',
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      final int customerCount = responseData['count'];
+      return customerCount;
+    } else {
+      throw Exception(
+        'Error Fetching Data, Http Status Code == "${response.statusCode}"',
+      );
+    }
+  }
 }

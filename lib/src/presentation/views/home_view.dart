@@ -51,11 +51,10 @@ class HomeView extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      // TODO(SAM):Add total de clientes customercounter endpoint
-                      '20',
-                      style: TextStyle(
+                      '${Strings.homePageCustomerCount}${state.customerCount.toString()}',
+                      style: const TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.w600,
                       ),
