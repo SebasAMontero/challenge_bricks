@@ -11,6 +11,7 @@ class BricksTextFormField extends StatefulWidget {
     required this.validator,
     required this.iconData,
     required this.labelText,
+    this.isEmail = false,
   });
 
   final String? Function(String?)? validator;
@@ -20,6 +21,8 @@ class BricksTextFormField extends StatefulWidget {
   final IconData iconData;
 
   final String labelText;
+
+  final bool isEmail;
 
   @override
   State<BricksTextFormField> createState() => _BricksTextFormFieldState();
@@ -40,12 +43,16 @@ class _BricksTextFormFieldState extends State<BricksTextFormField> {
         ),
         Expanded(
           child: TextFormField(
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
             controller: widget.controller,
             decoration: InputDecoration(
               labelText: widget.labelText,
             ),
             validator: widget.validator,
             autovalidateMode: AutovalidateMode.onUserInteraction,
+            keyboardType: widget.isEmail ? TextInputType.emailAddress : null,
           ),
         ),
       ],

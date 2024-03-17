@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// View of the Customer form page.
 /// {@endtemplate}
 class CustomerFormView extends StatefulWidget {
-  /// {@macro HomeView}
+  /// {@macro CustomerFormView}
   const CustomerFormView({Key? key}) : super(key: key);
 
   @override
@@ -152,6 +152,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                     validator: _validateEmailInput,
                     iconData: Icons.email_outlined,
                     labelText: Strings.labelTextEmail,
+                    isEmail: true,
                   ),
                   const SizedBox(height: 20),
                   Row(

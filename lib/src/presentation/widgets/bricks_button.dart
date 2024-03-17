@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// {@template BricksButton}
+/// Custom button with a title and can be disabled.
+/// {@endtemplate}
 class BricksButton extends StatelessWidget {
+  /// {@macro BricksButton}
   const BricksButton({
     super.key,
     required this.onTap,
@@ -22,11 +26,11 @@ class BricksButton extends StatelessWidget {
       onTap: isEnabled ? onTap : null,
       child: Container(
         decoration: BoxDecoration(
-          color: isEnabled ? Colors.purpleAccent : Colors.grey,
+          color: isEnabled ? Colors.orange.withOpacity(0.8) : Colors.grey,
           borderRadius: BorderRadius.circular(100),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withOpacity(0.5),
               spreadRadius: 4,
               blurRadius: 8,
               offset: const Offset(0, 2),

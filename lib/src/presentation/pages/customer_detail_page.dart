@@ -33,7 +33,7 @@ class CustomerDetailPage extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                Assets.background,
+                Assets.nightSkyBackground,
               ),
               fit: BoxFit.cover,
             ),

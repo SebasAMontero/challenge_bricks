@@ -93,85 +93,97 @@ class CustomerDetailView extends StatelessWidget {
                       customerImageUrl: customerImageUrl,
                     ),
                     const SizedBox(height: 20),
-                    SizedBox(
-                      child: RichText(
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        text: TextSpan(
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
-                          children: [
-                            const TextSpan(
-                              text: Strings.customerDetailNamePrefix,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            TextSpan(
-                              text: fullNameCustomer,
-                              style: const TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 199, 199, 199)
+                            .withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      child: RichText(
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        text: TextSpan(
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            child: RichText(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              text: TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                                children: [
+                                  const TextSpan(
+                                    text: Strings.customerDetailNamePrefix,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: fullNameCustomer,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          children: [
-                            const TextSpan(
-                              text: Strings.customerDetailEmailPrefix,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            child: RichText(
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              text: TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                                children: [
+                                  const TextSpan(
+                                    text: Strings.customerDetailEmailPrefix,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: emailCustomer,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
                               ),
                             ),
-                            TextSpan(
-                              text: emailCustomer,
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      child: RichText(
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        text: TextSpan(
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
                           ),
-                          children: [
-                            const TextSpan(
-                              text: Strings.customerDetailCityPrefix,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            child: RichText(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              text: TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                                children: [
+                                  const TextSpan(
+                                    text: Strings.customerDetailCityPrefix,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: cityName,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            TextSpan(
-                              text: cityName,
-                              style: const TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 20),
