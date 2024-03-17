@@ -2,7 +2,11 @@ import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
 
 import '../datasources/i_customer_data_source.dart';
 
+/// {@template CustomerRepository}
+/// Is responsible for managing the retrieval of customer data.
+/// {@endtemplate}
 class CustomerRepository {
+  /// {@macro CustomerRepository}
   CustomerRepository({
     required ICustomerDataSource customerDataSource,
   }) : _customerDataSource = customerDataSource;

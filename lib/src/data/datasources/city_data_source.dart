@@ -6,6 +6,10 @@ import 'package:http/http.dart' show Client;
 
 import '../../constants/strings.dart';
 
+/// {@template CityDataSource}
+/// Is responsible for fetching [City] data from an external API.
+/// It implements the ICityDataSource interface.
+/// {@endtemplate}
 class CityDataSource implements ICityDataSource {
   final Client client = Client();
 

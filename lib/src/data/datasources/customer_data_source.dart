@@ -5,6 +5,10 @@ import 'package:http/http.dart' show Client;
 
 import '../../constants/strings.dart';
 
+/// {@template CustomerDataSource}
+/// Is responsible for fetching [Customer] data from an external API.
+/// It implements the ICityDataSource interface.
+/// {@endtemplate}
 class CustomerDataSource implements ICustomerDataSource {
   final Client client = Client();
   static const int pageItemSize = 30;
