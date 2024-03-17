@@ -3,6 +3,7 @@ import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_customer_detail/bloc_customer_detail.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/bricks_avatar.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/delete_customer_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,12 +11,37 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// View of the Customer detail page.
 /// {@endtemplate}
 class CustomerDetailView extends StatelessWidget {
-  /// {@macro HomeView}
+  /// {@macro CustomerDetailView}
   const CustomerDetailView({
     Key? key,
   }) : super(key: key);
 
-// TODO(SAM):
+  /// Opens a dialog that warns and asks the user for confirmation prior to
+  /// deleting a customer.
+  Future<void> _dialogDeleteCustomer({
+    required BuildContext context,
+    required int idCustomer,
+    required String nameCustomer,
+  }) {
+    return showDialog<void>(
+      context: context,
+      builder: (_) {
+        return BlocProvider.value(
+          value: context.read<BlocCustomerDetail>(),
+          child: DeleteCustomerDialog(
+            nameCustomer: nameCustomer,
+            onTap: () {
+              context.read<BlocCustomerDetail>().add(
+                    BlocCustomerDetailEventDeleteCustomer(
+                      idCustomer: idCustomer,
+                    ),
+                  );
+            },
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,14 +176,21 @@ class CustomerDetailView extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      // TODO(SAM):   dialog
-                      onPressed: () => {
-                        context.read<BlocCustomerDetail>().add(
-                              BlocCustomerDetailEventDeleteCustomer(
-                                idCustomer: idCustomer,
-                              ),
-                            )
-                      },
+                      onPressed: () => _dialogDeleteCustomer(
+                        context: context,
+                        idCustomer: idCustomer,
+                        nameCustomer: fullNameCustomer,
+                      ),
+                      style: ButtonStyle(
+                        side: MaterialStateProperty.all(
+                          const BorderSide(color: Colors.black),
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
                       child: const Text(
                         Strings.customerDetailDeleteUserButtonText,
                         style: TextStyle(

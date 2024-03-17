@@ -8,8 +8,8 @@ class CustomerRepository {
   }) : _customerDataSource = customerDataSource;
 
   final ICustomerDataSource _customerDataSource;
-  // todo(sam): add docu
-  ///
+
+  /// Fetches customers by page.
   Future<List<Customer>> fetchCustomersByPage() async {
     final customer = await _customerDataSource.fetchCustomers();
 
