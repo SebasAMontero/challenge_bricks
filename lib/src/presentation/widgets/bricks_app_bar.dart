@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/constants/assets.dart';
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:flutter/material.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 
@@ -41,7 +42,7 @@ class BricksAppBar extends StatelessWidget implements PreferredSizeWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 26,
+                      fontSize: Doubles.fontSizeHuge,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -53,7 +54,7 @@ class BricksAppBar extends StatelessWidget implements PreferredSizeWidget {
                     child: const Icon(
                       Icons.add_circle_outline,
                       color: Colors.blue,
-                      size: 40,
+                      size: Doubles.iconSizeBig,
                     ),
                   ),
                 ),

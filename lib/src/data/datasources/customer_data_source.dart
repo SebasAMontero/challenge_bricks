@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:bricks_app_flutter/src/data/datasources/i_customer_data_source.dart';
+import 'package:bricks_app_flutter/src/domain/datasources/i_customer_data_source.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
 import 'package:http/http.dart' show Client;
 
@@ -12,11 +12,11 @@ import '../../constants/strings.dart';
 class CustomerDataSource implements ICustomerDataSource {
   final Client client = Client();
   static const int pageItemSize = 30;
-
+// 
   @override
   Future<List<Customer>> fetchCustomers() async {
-// TODO(SAM): Add pagination
-//  siguiente pagina fetch
+// TODO(SAM): Pasar pageNumber e ItemSize o usar constante
+// siguiente pagina fetch
     final response = await client.get(
       Uri.parse(
         '${Strings.baseUrl}${Strings.customerEndpoint}?page=0&size=$pageItemSize',

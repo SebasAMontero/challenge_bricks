@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class DeleteCustomerDialog extends StatelessWidget {
             Strings.customerDetailDeleteUserDialogTitle,
             style: TextStyle(
               fontWeight: FontWeight.w600,
-              fontSize: 24,
+              fontSize: Doubles.fontSizeVeryLarge,
             ),
           ),
         ),
@@ -38,7 +39,7 @@ class DeleteCustomerDialog extends StatelessWidget {
             '${Strings.customerDetailDeleteUserDialogConfirmation}$nameCustomer${Strings.commonQuestionMark}',
             style: const TextStyle(
               fontWeight: FontWeight.w400,
-              fontSize: 16,
+              fontSize: Doubles.fontSizeSmall,
             ),
           ),
         ),
@@ -61,7 +62,7 @@ class DeleteCustomerDialog extends StatelessWidget {
                   Strings.commonCancel,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 20,
+                    fontSize: Doubles.fontSizeLarge,
                   ),
                 ),
               ),
@@ -80,7 +81,7 @@ class DeleteCustomerDialog extends StatelessWidget {
                   Strings.commonDelete,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 20,
+                    fontSize: Doubles.fontSizeLarge,
                   ),
                 ),
               ),

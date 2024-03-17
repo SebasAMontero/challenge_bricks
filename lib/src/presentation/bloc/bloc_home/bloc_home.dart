@@ -12,14 +12,18 @@ part 'bloc_home_event.dart';
 /// {@endtemplate}
 class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
   /// {@macro BlocHome}
-  BlocHome({this.getCustomerRepository, this.getCityRepository})
-      : super(const BlocHomeStateInicial()) {
+  BlocHome({
+    this.getCustomerRepository,
+    this.getCityRepository,
+  }) : super(const BlocHomeStateInicial()) {
     on<BlocHomeEventInitialize>(
       _initializeCustomers,
     );
+    // TODO(SAM): NEXT page previous page.
   }
   final CustomerRepository? getCustomerRepository;
   final CityRepository? getCityRepository;
+  // TODO(SAM): Page variable sumar o restar.
 
   /// Initializes data and adds it to the state.
   Future<void> _initializeCustomers(

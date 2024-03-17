@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,7 @@ class HomeView extends StatelessWidget {
               child: Text(
                 Strings.errorFetchingData,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: Doubles.fontSizeLarge,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -59,7 +60,7 @@ class HomeView extends StatelessWidget {
                     child: Text(
                       '${Strings.homePageCustomerCount}${state.customerCount.toString()}',
                       style: const TextStyle(
-                        fontSize: 30.0,
+                        fontSize: Doubles.fontSizeHuge,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/bricks_avatar.dart';
@@ -63,7 +64,7 @@ class CustomerCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: Doubles.fontSizeSmall,
                         ),
                       ),
                     ),
@@ -78,7 +79,7 @@ class CustomerCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: Doubles.fontSizeSmall,
                         ),
                       ),
                     ),
@@ -96,7 +97,7 @@ class CustomerCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                    fontSize: Doubles.fontSizeSmall,
                   ),
                 ),
               ),

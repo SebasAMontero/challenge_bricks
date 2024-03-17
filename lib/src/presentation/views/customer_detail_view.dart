@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_customer_detail/bloc_customer_detail.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/bricks_avatar.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_rich_text.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/delete_customer_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,7 +73,7 @@ class CustomerDetailView extends StatelessWidget {
               child: Text(
                 Strings.errorFetchingData,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: Doubles.fontSizeLarge,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -102,86 +104,19 @@ class CustomerDetailView extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          SizedBox(
-                            child: RichText(
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              text: TextSpan(
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                                children: [
-                                  const TextSpan(
-                                    text: Strings.customerDetailNamePrefix,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: fullNameCustomer,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          BricksRichText(
+                            prefixText: Strings.customerDetailNamePrefix,
+                            detailText: fullNameCustomer,
                           ),
                           const SizedBox(height: 10),
-                          SizedBox(
-                            child: RichText(
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              text: TextSpan(
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                                children: [
-                                  const TextSpan(
-                                    text: Strings.customerDetailEmailPrefix,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: emailCustomer,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          BricksRichText(
+                            prefixText: Strings.customerDetailEmailPrefix,
+                            detailText: emailCustomer,
                           ),
                           const SizedBox(height: 10),
-                          SizedBox(
-                            child: RichText(
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              text: TextSpan(
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                                children: [
-                                  const TextSpan(
-                                    text: Strings.customerDetailCityPrefix,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: cityName,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          BricksRichText(
+                            prefixText: Strings.customerDetailCityPrefix,
+                            detailText: cityName,
                           ),
                         ],
                       ),
@@ -206,7 +141,7 @@ class CustomerDetailView extends StatelessWidget {
                       child: const Text(
                         Strings.customerDetailDeleteUserButtonText,
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: Doubles.fontSizeVeryLarge,
                         ),
                       ),
                     ),

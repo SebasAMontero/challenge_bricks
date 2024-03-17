@@ -14,7 +14,10 @@ import 'package:bricks_app_flutter/src/presentation/widgets/bricks_app_bar.dart'
 @RoutePage()
 class HomePage extends StatelessWidget {
   /// {@macro HomePage}
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BlocHome>(

@@ -1,3 +1,4 @@
+/// Class where the assets are stored.
 class Assets {
   const Assets._();
   static const String customerPlaceholder =

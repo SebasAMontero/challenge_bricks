@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:flutter/material.dart';
 
 /// {@template BricksButton}
@@ -46,7 +47,7 @@ class BricksButton extends StatelessWidget {
             title,
             style: const TextStyle(
               fontWeight: FontWeight.w400,
-              fontSize: 20,
+              fontSize: Doubles.fontSizeLarge,
             ),
           ),
         ),

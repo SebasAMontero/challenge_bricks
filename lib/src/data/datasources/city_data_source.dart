@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bricks_app_flutter/src/data/datasources/i_city_data_source.dart';
+import 'package:bricks_app_flutter/src/domain/datasources/i_city_data_source.dart';
 import 'package:bricks_app_flutter/src/domain/models/city/city.dart';
 import 'package:http/http.dart' show Client;
 

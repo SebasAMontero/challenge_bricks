@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_customer_form/bloc_customer_form.dart';
@@ -109,7 +110,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
               child: Text(
                 Strings.errorFetchingData,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: Doubles.fontSizeLarge,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -131,7 +132,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                         Strings.customerFormViewTitle,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 20,
+                          fontSize: Doubles.fontSizeLarge,
                         ),
                       ),
                     ),
@@ -186,7 +187,6 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                     ],
                   ),
                   const Spacer(),
-                  // TODO(SAM): Add singlechildscroll
                   Center(
                     child: BricksButton(
                       onTap: () {
