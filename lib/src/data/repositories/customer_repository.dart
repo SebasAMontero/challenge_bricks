@@ -17,11 +17,12 @@ class CustomerRepository {
   Future<List<Customer>> fetchCustomersByPage({
     required int currentPage,
   }) async {
-    final customer = await _customerDataSource.fetchCustomersByPage(
+    final customersJsonList = await _customerDataSource.fetchCustomersByPage(
       currentPage: currentPage,
     );
-
-    return customer;
+    List<Customer> customers =
+        customersJsonList.map((json) => Customer.fromJson(json)).toList();
+    return customers;
   }
 
   /// Creates a customer and adds it to the database
@@ -49,7 +50,8 @@ class CustomerRepository {
   Future<Customer> fetchCustomerById({required idCustomer}) async {
     final customer =
         await _customerDataSource.fetchCustomerById(idCustomer: idCustomer);
-    return customer;
+
+    return Customer.fromJson(customer);
   }
 
   /// Returns the number of customers in the database

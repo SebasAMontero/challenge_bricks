@@ -12,9 +12,12 @@ class CityRepository {
 
   final ICityDataSource _cityDataSource;
 
+  /// Gets the Json of cities, maps and models it.
   Future<List<City>> fetchCities() async {
-    final listCities = await _cityDataSource.fetchCities();
-// TODO(SAM): model data here?
-    return listCities;
+    final cityJsonList = await _cityDataSource.fetchCities();
+    List<City> cities =
+        cityJsonList.map((json) => City.fromJson(json)).toList();
+
+    return cities;
   }
 }

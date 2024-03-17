@@ -19,6 +19,7 @@ class CustomerFormPage extends StatelessWidget {
     final cityRepository = context.read<BlocGeneral>().state.cityRepository;
     final customerRepository =
         context.read<BlocGeneral>().state.customerRepository;
+
     return BlocProvider<BlocCustomerForm>(
       create: (context) => BlocCustomerForm(
         customerRepository: customerRepository,

@@ -14,7 +14,7 @@ class CustomerDataSource implements ICustomerDataSource {
   final Client client = Client();
 
   @override
-  Future<List<Customer>> fetchCustomersByPage({
+  Future<List<dynamic>> fetchCustomersByPage({
     required int currentPage,
   }) async {
     final response = await client.get(
@@ -27,9 +27,8 @@ class CustomerDataSource implements ICustomerDataSource {
       final String responseBody = utf8.decode(response.bodyBytes);
 
       final List<dynamic> customersJsonList = json.decode(responseBody);
-      List<Customer> customers =
-          customersJsonList.map((json) => Customer.fromJson(json)).toList();
-      return customers;
+
+      return customersJsonList;
     } else {
       throw Exception(
         'Error Fetching Data, Http Status Code == "${response.statusCode}"',
@@ -85,7 +84,7 @@ class CustomerDataSource implements ICustomerDataSource {
   }
 
   @override
-  Future<Customer> fetchCustomerById({
+  Future<dynamic> fetchCustomerById({
     required idCustomer,
   }) async {
     final response = await client.get(
@@ -97,7 +96,7 @@ class CustomerDataSource implements ICustomerDataSource {
     if (response.statusCode == 200) {
       final String responseBody = utf8.decode(response.bodyBytes);
       final Map<String, dynamic> customerJson = json.decode(responseBody);
-      return Customer.fromJson(customerJson);
+      return  customerJson;
     } else {
       throw Exception(
         'Error Fetching Data, Http Status Code == "${response.statusCode}"',

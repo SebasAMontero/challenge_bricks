@@ -5,7 +5,7 @@ import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
 /// {@endtemplate}
 abstract class ICustomerDataSource {
   /// Returns a [Future] that retrieves a paginated list of customers from the server.
-  Future<List<Customer>> fetchCustomersByPage({
+  Future<List<dynamic>> fetchCustomersByPage({
     required int currentPage,
   });
 
@@ -13,7 +13,7 @@ abstract class ICustomerDataSource {
   Future<int> fetchCustomerCount();
 
   /// Returns a [Future] that retrieves a specific customer.
-  Future<Customer> fetchCustomerById({
+  Future<dynamic> fetchCustomerById({
     required int idCustomer,
   });
 

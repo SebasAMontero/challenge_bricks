@@ -14,7 +14,7 @@ class CityDataSource implements ICityDataSource {
   final Client client = Client();
 
   @override
-  Future<List<City>> fetchCities() async {
+  Future<List<dynamic>> fetchCities() async {
     final response = await client.get(
       Uri.parse(
         '${Strings.baseUrl}${Strings.cityEndpoint}',
@@ -24,9 +24,8 @@ class CityDataSource implements ICityDataSource {
     if (response.statusCode == 200) {
       final String responseBody = utf8.decode(response.bodyBytes);
       final List<dynamic> cityJsonList = json.decode(responseBody);
-      List<City> cities =
-          cityJsonList.map((json) => City.fromJson(json)).toList();
-      return cities;
+
+      return cityJsonList;
     } else {
       throw Exception(
         'Error Fetching Data, Http Status Code == "${response.statusCode}"',
