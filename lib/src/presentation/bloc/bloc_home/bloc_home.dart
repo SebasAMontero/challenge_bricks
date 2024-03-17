@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/data/datasources/customer_data_source.dart';
 import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
 import 'package:bricks_app_flutter/src/data/repositories/customer_repository.dart';
@@ -19,13 +20,17 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     on<BlocHomeEventInitialize>(
       _initializeCustomers,
     );
-    // TODO(SAM): NEXT page previous page.
+    on<BlocHomeEventPreviousPage>(
+      _previousPage,
+    );
+    on<BlocHomeEventNextPage>(
+      _nextPage,
+    );
   }
   final CustomerRepository? getCustomerRepository;
   final CityRepository? getCityRepository;
-  // TODO(SAM): Page variable sumar o restar.
 
-  /// Initializes data and adds it to the state.
+  /// Initializes customer data and adds it to the state.
   Future<void> _initializeCustomers(
     BlocHomeEventInitialize event,
     Emitter<BlocHomeState> emit,
@@ -39,15 +44,98 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     final CustomerRepository customerRepository =
         CustomerRepository(customerDataSource: customerDataSource);
     try {
-      final listCustomers = await customerRepository.fetchCustomersByPage();
-
       final customerCount = await customerRepository.fetchCustomerCount();
+      final numberOfPages = customerCount / Doubles.pageItemSize;
+      final listCustomers = await customerRepository.fetchCustomersByPage(
+        currentPage: state.currentPage,
+      );
 
       emit(
         BlocHomeStateSuccess.from(
           state,
           listCustomers: listCustomers,
           customerCount: customerCount,
+          numberOfPages: numberOfPages,
+        ),
+      );
+    } catch (error) {
+      emit(
+        BlocHomeStateError.from(
+          state,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
+  }
+
+  /// Fetches customers from the previous page.
+  Future<void> _previousPage(
+    BlocHomeEventPreviousPage event,
+    Emitter<BlocHomeState> emit,
+  ) async {
+    emit(BlocHomeStateLoadingPagination.from(state));
+
+    var currentPage = state.currentPage;
+    if (currentPage > 0) {
+      currentPage--;
+    }
+
+    final CustomerDataSource customerDataSource = CustomerDataSource();
+
+    // todo(sam): add provider?
+
+    final CustomerRepository customerRepository =
+        CustomerRepository(customerDataSource: customerDataSource);
+    try {
+      final listCustomers = await customerRepository.fetchCustomersByPage(
+        currentPage: currentPage,
+      );
+
+      emit(
+        BlocHomeStateSuccess.from(
+          state,
+          currentPage: currentPage,
+          listCustomers: listCustomers,
+        ),
+      );
+    } catch (error) {
+      emit(
+        BlocHomeStateError.from(
+          state,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
+  }
+
+  /// Fetches customers from the next page.
+  Future<void> _nextPage(
+    BlocHomeEventNextPage event,
+    Emitter<BlocHomeState> emit,
+  ) async {
+    emit(BlocHomeStateLoadingPagination.from(state));
+
+    var currentPage = state.currentPage;
+
+    currentPage++;
+
+    final CustomerDataSource customerDataSource = CustomerDataSource();
+
+    // todo(sam): add provider?
+
+    final CustomerRepository customerRepository =
+        CustomerRepository(customerDataSource: customerDataSource);
+
+    try {
+      final listCustomers = await customerRepository.fetchCustomersByPage(
+        currentPage: currentPage,
+      );
+
+      emit(
+        BlocHomeStateSuccess.from(
+          state,
+          currentPage: currentPage,
+          listCustomers: listCustomers,
         ),
       );
     } catch (error) {

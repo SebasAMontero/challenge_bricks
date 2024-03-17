@@ -15,3 +15,19 @@ class BlocHomeEventInitialize extends BlocHomeEvent {
   /// {@macro BlocHomeEventInitialize}
   const BlocHomeEventInitialize();
 }
+
+/// {@template BlocHomeEventNextPage}
+/// The event is called to navigate to the next page.
+/// {@endtemplate}
+class BlocHomeEventNextPage extends BlocHomeEvent {
+  /// {@macro BlocHomeEventNextPage}
+  const BlocHomeEventNextPage();
+}
+
+/// {@template BlocHomeEventPreviousPage}
+/// The event is called to navigate to the previous page.
+/// {@endtemplate}
+class BlocHomeEventPreviousPage extends BlocHomeEvent {
+  /// {@macro BlocHomeEventPreviousPage}
+  const BlocHomeEventPreviousPage();
+}

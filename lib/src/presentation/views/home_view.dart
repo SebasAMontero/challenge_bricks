@@ -1,5 +1,7 @@
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_customer_count.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_home_pagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
@@ -16,77 +18,60 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final containerProportionalHeight =
-        MediaQuery.of(context).size.height * 0.23;
-
-    final containerProportionalWidth = MediaQuery.of(context).size.width * 0.9;
-
     return SafeArea(
-      child: BlocBuilder<BlocHome, BlocHomeState>(
-        builder: (context, state) {
-          if (state is BlocHomeStateLoading) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.deepPurple,
-              ),
-            );
-          }
-          if (state is BlocHomeStateError) {
-            return const Center(
-              child: Text(
-                Strings.errorFetchingData,
-                style: TextStyle(
-                  fontSize: Doubles.fontSizeLarge,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            );
-          }
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              children: [
-                Container(
-                  width: containerProportionalWidth,
-                  height: containerProportionalHeight,
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple.withOpacity(0.4),
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1.0,
+      child: Column(
+        children: [
+          const BricksCustomerCount(),
+          Expanded(
+            child: BlocBuilder<BlocHome, BlocHomeState>(
+              builder: (context, state) {
+                if (state is BlocHomeStateLoadingPagination) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.deepPurple,
                     ),
-                  ),
-                  child: Center(
+                  );
+                }
+                if (state is BlocHomeStateError) {
+                  return const Center(
                     child: Text(
-                      '${Strings.homePageCustomerCount}${state.customerCount.toString()}',
-                      style: const TextStyle(
-                        fontSize: Doubles.fontSizeHuge,
+                      Strings.errorFetchingData,
+                      style: TextStyle(
+                        fontSize: Doubles.fontSizeLarge,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: state.listCustomers.length,
-                    itemBuilder: (context, index) {
-                      return CustomerCard(
-                        customer: state.listCustomers[index],
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
+                  );
+                }
+                if (state is BlocHomeStateSuccess) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.listCustomers.length,
+                            itemBuilder: (context, index) {
+                              return CustomerCard(
+                                customer: state.listCustomers[index],
+                              );
+                            },
+                          ),
+                        ),
+                        const BricksHomePagination(),
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }

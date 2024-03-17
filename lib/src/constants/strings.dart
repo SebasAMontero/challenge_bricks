@@ -12,7 +12,7 @@ class Strings {
   static const String homePageAppBarTitle = 'Clientes';
 
   /// 'Clientes'
-  static const String homePageCustomerCount = 'Customer count: ';
+  static const String homeViewCustomerCount = 'Customer count: ';
 
   /// Used in error States of Bloc.
   static const String errorFetchingData = 'An error occurred fetching data.';
@@ -74,4 +74,7 @@ class Strings {
 
   /// Text to indicate this character ?
   static const String commonQuestionMark = '?';
+
+  /// Text previous to the number of pages
+  static const String homeViewPageNumber = 'Page: ';
 }

@@ -14,8 +14,12 @@ class CustomerRepository {
   final ICustomerDataSource _customerDataSource;
 
   /// Fetches customers by page.
-  Future<List<Customer>> fetchCustomersByPage() async {
-    final customer = await _customerDataSource.fetchCustomers();
+  Future<List<Customer>> fetchCustomersByPage({
+    required int currentPage,
+  }) async {
+    final customer = await _customerDataSource.fetchCustomersByPage(
+      currentPage: currentPage,
+    );
 
     return customer;
   }

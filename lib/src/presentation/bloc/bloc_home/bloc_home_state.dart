@@ -8,20 +8,28 @@ class BlocHomeState {
   const BlocHomeState._({
     this.listCustomers = const [],
     this.customerCount = 0,
+    this.currentPage = 0,
+    this.numberOfPages = 0,
   });
 
   BlocHomeState.from(
     BlocHomeState otherState, {
     List<Customer>? listCustomers,
     int? customerCount,
+    int? currentPage,
+    double? numberOfPages,
   }) : this._(
           listCustomers: listCustomers ?? otherState.listCustomers,
           customerCount: customerCount ?? otherState.customerCount,
+          currentPage: currentPage ?? otherState.currentPage,
+          numberOfPages: numberOfPages ?? otherState.numberOfPages,
         );
 
   List<Object> get props => [
         listCustomers,
         customerCount,
+        currentPage,
+        numberOfPages,
       ];
 
   /// List of customers
@@ -29,6 +37,12 @@ class BlocHomeState {
 
   /// Total number of customers in the database
   final int customerCount;
+
+  /// Current page number
+  final int currentPage;
+
+  /// Total number of pages
+  final double numberOfPages;
 }
 
 /// {@template BlocHomeStateInicial}
@@ -47,6 +61,14 @@ class BlocHomeStateLoading extends BlocHomeState {
   BlocHomeStateLoading.from(super.otherState) : super.from();
 }
 
+/// {@template BlocHomeStateLoadingPagination}
+/// Loading state of the Home page, when its loading a new page of customers.
+/// {@endtemplate}
+class BlocHomeStateLoadingPagination extends BlocHomeState {
+  /// {@macro BlocHomeStateLoadingPagination}
+  BlocHomeStateLoadingPagination.from(super.otherState) : super.from();
+}
+
 /// {@template BlocHomeStateSuccess}
 /// Success state of the components of the HomePage
 /// {@endtemplate}
@@ -56,6 +78,8 @@ class BlocHomeStateSuccess extends BlocHomeState {
     super.otherState, {
     super.listCustomers,
     super.customerCount,
+    super.currentPage,
+    super.numberOfPages,
   }) : super.from();
 }
 

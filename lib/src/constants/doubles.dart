@@ -7,4 +7,8 @@ class Doubles {
   static const double fontSizeVeryLarge = 24;
   static const double fontSizeHuge = 28;
   static const double iconSizeBig = 40;
+  static const double iconSizeHuge = 50;
+
+  /// Quantity of customers to fetch per page.
+  static const int pageItemSize = 5;
 }

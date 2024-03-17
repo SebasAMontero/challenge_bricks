@@ -32,13 +32,11 @@ class CustomerDetailView extends StatelessWidget {
           value: context.read<BlocCustomerDetail>(),
           child: DeleteCustomerDialog(
             nameCustomer: nameCustomer,
-            onTap: () {
-              context.read<BlocCustomerDetail>().add(
-                    BlocCustomerDetailEventDeleteCustomer(
-                      idCustomer: idCustomer,
-                    ),
-                  );
-            },
+            onTap: () => context.read<BlocCustomerDetail>().add(
+                  BlocCustomerDetailEventDeleteCustomer(
+                    idCustomer: idCustomer,
+                  ),
+                ),
           ),
         );
       },
