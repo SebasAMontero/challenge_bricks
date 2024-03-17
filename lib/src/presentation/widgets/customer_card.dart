@@ -33,7 +33,7 @@ class CustomerCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
-          color: Colors.deepPurple.withOpacity(0.4),
+          color: Colors.deepPurple.withOpacity(0.7),
           border: Border.all(color: Colors.black, width: 2.0),
         ),
         child: Row(

@@ -1,6 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:bricks_app_flutter/src/data/datasources/city_data_source.dart';
-import 'package:bricks_app_flutter/src/data/datasources/customer_data_source.dart';
 import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
 import 'package:bricks_app_flutter/src/data/repositories/customer_repository.dart';
 import 'package:bricks_app_flutter/src/domain/models/city/city.dart';
@@ -16,14 +14,14 @@ class BlocCustomerForm
     extends Bloc<BlocCustomerFormEvent, BlocCustomerFormState> {
   /// {@macro BlocCustomerForm}
   BlocCustomerForm({
-    this.getCustomerRepository,
-    this.getCityRepository,
-  }) : super(const BlocCustomerFormStateInicial()) {
+    required this.customerRepository,
+    required this.cityRepository,
+  }) : super(const BlocCustomerFormStateInitial()) {
     on<BlocCustomerFormEventInitialize>(_initializeCities);
     on<BlocCustomerFormEventSubmitCustomer>(_submitCustomer);
   }
-  final CustomerRepository? getCustomerRepository;
-  final CityRepository? getCityRepository;
+  final CustomerRepository customerRepository;
+  final CityRepository cityRepository;
 
   /// Initializes data and adds it to the state.
   Future<void> _initializeCities(
@@ -32,10 +30,6 @@ class BlocCustomerForm
   ) async {
     emit(BlocCustomerFormStateLoading.from(state));
 
-    final CityDataSource cityDataSource = CityDataSource();
-    // todo(sam): add provider?
-    final CityRepository cityRepository =
-        CityRepository(cityDataSource: cityDataSource);
     try {
       final listCities = await cityRepository.fetchCities();
 
@@ -62,10 +56,6 @@ class BlocCustomerForm
   ) async {
     emit(BlocCustomerFormStateLoading.from(state));
 
-    final CustomerDataSource customerDataSource = CustomerDataSource();
-
-    final CustomerRepository customerRepository =
-        CustomerRepository(customerDataSource: customerDataSource);
     try {
       final createdCustomer = await customerRepository.postCustomer(
         name: event.name,

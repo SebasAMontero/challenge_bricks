@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:bricks_app_flutter/src/data/datasources/customer_data_source.dart';
 import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
 import 'package:bricks_app_flutter/src/data/repositories/customer_repository.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
@@ -14,9 +13,9 @@ class BlocCustomerDetail
     extends Bloc<BlocCustomerDetailEvent, BlocCustomerDetailState> {
   /// {@macro BlocCustomerDetail}
   BlocCustomerDetail({
-    this.getCustomerRepository,
-    this.getCityRepository,
-  }) : super(const BlocCustomerDetailStateInicial()) {
+    required this.customerRepository,
+    required this.cityRepository,
+  }) : super(const BlocCustomerDetailStateInitial()) {
     on<BlocCustomerDetailEventInitialize>(
       _initialize,
     );
@@ -24,8 +23,8 @@ class BlocCustomerDetail
       _deleteCustomerById,
     );
   }
-  final CustomerRepository? getCustomerRepository;
-  final CityRepository? getCityRepository;
+  final CustomerRepository customerRepository;
+  final CityRepository cityRepository;
 
   /// Initializes data and adds it to the state.
   Future<void> _initialize(
@@ -34,12 +33,6 @@ class BlocCustomerDetail
   ) async {
     emit(BlocCustomerDetailStateLoading.from(state));
 
-    final CustomerDataSource customerDataSource = CustomerDataSource();
-
-    // todo(sam): add provider?
-
-    final CustomerRepository customerRepository =
-        CustomerRepository(customerDataSource: customerDataSource);
     try {
       final customer = await customerRepository.fetchCustomerById(
         idCustomer: event.idCustomer,
@@ -68,12 +61,6 @@ class BlocCustomerDetail
   ) async {
     emit(BlocCustomerDetailStateLoading.from(state));
 
-    final CustomerDataSource customerDataSource = CustomerDataSource();
-
-    // todo(sam): add provider?
-
-    final CustomerRepository customerRepository =
-        CustomerRepository(customerDataSource: customerDataSource);
     try {
       await customerRepository.deleteCustomerById(
         idCustomer: event.idCustomer,

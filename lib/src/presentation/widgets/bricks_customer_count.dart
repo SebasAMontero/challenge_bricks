@@ -33,7 +33,7 @@ class BricksCustomerCount extends StatelessWidget {
           width: containerProportionalWidth,
           height: containerProportionalHeight,
           decoration: BoxDecoration(
-            color: Colors.deepPurple.withOpacity(0.4),
+            color: Colors.deepPurple.withOpacity(0.7),
             border: Border.all(
               color: Colors.black,
               width: 2.0,

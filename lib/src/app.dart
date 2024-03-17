@@ -1,6 +1,12 @@
+import 'package:bricks_app_flutter/src/data/datasources/city_data_source.dart';
+import 'package:bricks_app_flutter/src/data/datasources/customer_data_source.dart';
+import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
+import 'package:bricks_app_flutter/src/data/repositories/customer_repository.dart';
+import 'package:bricks_app_flutter/src/presentation/bloc/bloc_general/bloc_general.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,8 +18,7 @@ class App extends StatelessWidget {
 }
 
 /// {@template AppView}
-/// Es la estructura general de la aplicación. También
-/// inicializa `AppRouter` para fines de manejo de rutas/routes.
+/// General structure of the app, also initializes AutoRouter.
 /// {@endtemplate}
 class AppView extends StatefulWidget {
   /// {@macro AppView}
@@ -25,32 +30,48 @@ class AppView extends StatefulWidget {
 
 class _AppViewState extends State<AppView> {
   late AppRouter appRouter;
+  late CityRepository cityRepository;
+  late CustomerRepository customerRepository;
+  late CityDataSource cityDataSource;
+  late CustomerDataSource customerDataSource;
 
   @override
   void initState() {
     super.initState();
     appRouter = AppRouter();
+    cityDataSource = CityDataSource();
+    customerDataSource = CustomerDataSource();
+
+    customerRepository =
+        CustomerRepository(customerDataSource: customerDataSource);
+    cityRepository = CityRepository(cityDataSource: cityDataSource);
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      color: const Color.fromARGB(255, 183, 183, 183),
-      routerDelegate: AutoRouterDelegate(
-        appRouter,
-      ),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
+    return BlocProvider(
+      create: (context) => BlocGeneral(
+        customerRepository: customerRepository,
+        cityRepository: cityRepository,
+      )..add(BlocGeneralEventInitialize()),
+      child: MaterialApp.router(
+        color: const Color.fromARGB(255, 183, 183, 183),
+        routerDelegate: AutoRouterDelegate(
+          appRouter,
         ),
-        useMaterial3: true,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+          ),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        builder: (context, child) => ScrollConfiguration(
+          behavior: NoGlowBehavior(),
+          child: child!,
+        ),
+        routeInformationParser: appRouter.defaultRouteParser(),
       ),
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) => ScrollConfiguration(
-        behavior: NoGlowBehavior(),
-        child: child!,
-      ),
-      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }

@@ -50,9 +50,8 @@ class DeleteCustomerDialog extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(20),
-                color: const Color.fromARGB(255, 208, 207, 207),
+                color: Colors.red,
               ),
               child: TextButton(
                 onPressed: () {
@@ -61,6 +60,7 @@ class DeleteCustomerDialog extends StatelessWidget {
                 child: const Text(
                   Strings.commonCancel,
                   style: TextStyle(
+                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                     fontSize: Doubles.fontSizeLarge,
                   ),
@@ -69,17 +69,15 @@ class DeleteCustomerDialog extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 227, 220, 141),
-                border: Border.all(
-                  color: Colors.black,
-                ),
+                color: Colors.green,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextButton(
                 onPressed: onTap,
                 child: const Text(
-                  Strings.commonDelete,
+                  Strings.commonConfirm,
                   style: TextStyle(
+                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                     fontSize: Doubles.fontSizeLarge,
                   ),

@@ -14,7 +14,7 @@ class CityRepository {
 
   Future<List<City>> fetchCities() async {
     final listCities = await _cityDataSource.fetchCities();
-
+// TODO(SAM): model data here?
     return listCities;
   }
 }

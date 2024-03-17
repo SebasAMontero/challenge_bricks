@@ -66,8 +66,8 @@ class Strings {
   static const String customerDetailDeleteUserDialogConfirmation =
       'Are you sure you want to\n delete ';
 
-  /// Text to indicate deletion
-  static const String commonDelete = 'Delete';
+  /// Text to confirm
+  static const String commonConfirm = 'Confirm';
 
   /// Text to indicate cancelling an action
   static const String commonCancel = 'Cancel';

@@ -24,12 +24,12 @@ class BlocCustomerDetailState {
   final Customer? customer;
 }
 
-/// {@template BlocCustomerDetailStateInicial}
+/// {@template BlocCustomerDetailStateInitial}
 /// Initial state of the Customer Detail page.
 /// {@endtemplate}
-class BlocCustomerDetailStateInicial extends BlocCustomerDetailState {
-  /// {@macro BlocCustomerDetailStateInicial}
-  const BlocCustomerDetailStateInicial() : super._();
+class BlocCustomerDetailStateInitial extends BlocCustomerDetailState {
+  /// {@macro BlocCustomerDetailStateInitial}
+  const BlocCustomerDetailStateInitial() : super._();
 }
 
 /// {@template BlocCustomerDetailStateLoading}

@@ -45,12 +45,12 @@ class BlocHomeState {
   final double numberOfPages;
 }
 
-/// {@template BlocHomeStateInicial}
+/// {@template BlocHomeStateInitial}
 /// Initial state of the home page.
 /// {@endtemplate}
-class BlocHomeStateInicial extends BlocHomeState {
-  /// {@macro BlocHomeStateInicial}
-  const BlocHomeStateInicial() : super._();
+class BlocHomeStateInitial extends BlocHomeState {
+  /// {@macro BlocHomeStateInitial}
+  const BlocHomeStateInitial() : super._();
 }
 
 /// {@template BlocHomeStateLoading}

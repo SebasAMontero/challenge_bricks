@@ -30,12 +30,12 @@ class BlocCustomerFormState {
   final Customer? createdCustomer;
 }
 
-/// {@template BlocCustomerFormStateInicial}
+/// {@template BlocCustomerFormStateInitial}
 /// Initial state of the Customer Form page.
 /// {@endtemplate}
-class BlocCustomerFormStateInicial extends BlocCustomerFormState {
-  /// {@macro BlocCustomerFormStateInicial}
-  const BlocCustomerFormStateInicial() : super._();
+class BlocCustomerFormStateInitial extends BlocCustomerFormState {
+  /// {@macro BlocCustomerFormStateInitial}
+  const BlocCustomerFormStateInitial() : super._();
 }
 
 /// {@template BlocCustomerFormStateLoading}

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
-import 'package:bricks_app_flutter/src/data/datasources/customer_data_source.dart';
 import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
 import 'package:bricks_app_flutter/src/data/repositories/customer_repository.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
@@ -14,9 +13,9 @@ part 'bloc_home_event.dart';
 class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
   /// {@macro BlocHome}
   BlocHome({
-    this.getCustomerRepository,
-    this.getCityRepository,
-  }) : super(const BlocHomeStateInicial()) {
+    required this.customerRepository,
+    required this.cityRepository,
+  }) : super(const BlocHomeStateInitial()) {
     on<BlocHomeEventInitialize>(
       _initializeCustomers,
     );
@@ -27,8 +26,9 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
       _nextPage,
     );
   }
-  final CustomerRepository? getCustomerRepository;
-  final CityRepository? getCityRepository;
+
+  final CustomerRepository customerRepository;
+  final CityRepository cityRepository;
 
   /// Initializes customer data and adds it to the state.
   Future<void> _initializeCustomers(
@@ -37,12 +37,6 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
   ) async {
     emit(BlocHomeStateLoading.from(state));
 
-    final CustomerDataSource customerDataSource = CustomerDataSource();
-
-    // todo(sam): add provider?
-
-    final CustomerRepository customerRepository =
-        CustomerRepository(customerDataSource: customerDataSource);
     try {
       final customerCount = await customerRepository.fetchCustomerCount();
       final numberOfPages = customerCount / Doubles.pageItemSize;
@@ -80,12 +74,6 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
       currentPage--;
     }
 
-    final CustomerDataSource customerDataSource = CustomerDataSource();
-
-    // todo(sam): add provider?
-
-    final CustomerRepository customerRepository =
-        CustomerRepository(customerDataSource: customerDataSource);
     try {
       final listCustomers = await customerRepository.fetchCustomersByPage(
         currentPage: currentPage,
@@ -118,13 +106,6 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     var currentPage = state.currentPage;
 
     currentPage++;
-
-    final CustomerDataSource customerDataSource = CustomerDataSource();
-
-    // todo(sam): add provider?
-
-    final CustomerRepository customerRepository =
-        CustomerRepository(customerDataSource: customerDataSource);
 
     try {
       final listCustomers = await customerRepository.fetchCustomersByPage(

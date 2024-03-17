@@ -176,7 +176,14 @@ class _CustomerFormViewState extends State<CustomerFormView> {
                                   onTap: () => setState(() {
                                     cityId = city.id;
                                   }),
-                                  child: Text(city.name),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        city.name,
+                                      ),
+                                      const Divider(height: 0),
+                                    ],
+                                  ),
                                 ),
                               )
                               .toList(),

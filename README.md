@@ -23,14 +23,14 @@ A simple Customers App made by Flutter. The idea is see the list of customers, a
 
 # Implemented packages:
 
-  auto_route: ^7.8.4
-  bloc: ^8.1.2
-  flutter_bloc: ^8.1.3
-  http: ^1.2.0
-  flutter_typeahead: ^5.0.2
-  freezed_annotation: ^2.4.1
-  freezed: ^2.4.7
-  json_serializable: ^6.7.1
+  - auto_route: ^7.8.4
+  - bloc: ^8.1.2
+  - flutter_bloc: ^8.1.3
+  - http: ^1.2.0
+  - flutter_typeahead: ^5.0.2
+  - freezed_annotation: ^2.4.1
+  - freezed: ^2.4.7
+  - json_serializable: ^6.7.1
 
 
 
