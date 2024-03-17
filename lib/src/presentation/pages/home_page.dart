@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/assets.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,12 +22,21 @@ class HomePage extends StatelessWidget {
         ..add(
           const BlocHomeEventInitialize(),
         ),
-      child: const Scaffold(
-        appBar: BricksAppBar(
+      child: Scaffold(
+        appBar: const BricksAppBar(
           title: Strings.homePageAppBarTitle,
         ),
-        body: HomeView(),
-        backgroundColor: Color.fromARGB(237, 241, 240, 240),
+        body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  Assets.sunnyBackground,
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: const HomeView()),
+        backgroundColor: const Color.fromARGB(237, 241, 240, 240),
       ),
     );
   }

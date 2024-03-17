@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
 
 /// {@template DeleteCustomerDialog}
@@ -12,6 +13,7 @@ class DeleteCustomerDialog extends StatelessWidget {
   });
 
   final VoidCallback onTap;
+
   final String nameCustomer;
 
   @override
@@ -21,7 +23,7 @@ class DeleteCustomerDialog extends StatelessWidget {
         height: 30,
         child: Center(
           child: Text(
-            'Delete customer',
+            Strings.customerDetailDeleteUserDialogTitle,
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 24,
@@ -33,7 +35,7 @@ class DeleteCustomerDialog extends StatelessWidget {
         height: 60,
         child: Center(
           child: Text(
-            'Are you sure you want to\n delete $nameCustomer?',
+            '${Strings.customerDetailDeleteUserDialogConfirmation}$nameCustomer${Strings.commonQuestionMark}',
             style: const TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 16,
@@ -56,7 +58,7 @@ class DeleteCustomerDialog extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 child: const Text(
-                  'Cancel',
+                  Strings.commonCancel,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -66,7 +68,7 @@ class DeleteCustomerDialog extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 212, 127, 127),
+                color: const Color.fromARGB(255, 227, 220, 141),
                 border: Border.all(
                   color: Colors.black,
                 ),
@@ -75,7 +77,7 @@ class DeleteCustomerDialog extends StatelessWidget {
               child: TextButton(
                 onPressed: onTap,
                 child: const Text(
-                  'Delete',
+                  Strings.commonDelete,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,

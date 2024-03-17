@@ -31,17 +31,16 @@ class _CustomerFormViewState extends State<CustomerFormView> {
   /// Bool that indicates that the form is valid to send and submit user.
   var formIsValid = false;
 
+  /// Id of the city chosen from the dropdown to add to the event.
   var cityId = 0;
 
   @override
   void dispose() {
     _controllerEmail.dispose();
     _controllerName.dispose();
-
     super.dispose();
   }
 
-// TODO(SAM): Extract widgets.
   /// Validates if the user typed a valid email.
   String? _validateEmailInput(String? email) {
     if (email == null || email.isEmpty) {

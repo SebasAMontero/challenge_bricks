@@ -58,4 +58,20 @@ class Strings {
 
   /// Text for the delete user button in the view Customer Detail
   static const String customerDetailDeleteUserButtonText = 'Delete User';
+
+  /// Title text for the delete user dialog in the view Customer Detail
+  static const String customerDetailDeleteUserDialogTitle = 'Delete User';
+
+  /// Confirmation text for the delete user dialog in the view Customer Detail
+  static const String customerDetailDeleteUserDialogConfirmation =
+      'Are you sure you want to\n delete ';
+
+  /// Text to indicate deletion
+  static const String commonDelete = 'Delete';
+
+  /// Text to indicate cancelling an action
+  static const String commonCancel = 'Cancel';
+
+  /// Text to indicate this character ?
+  static const String commonQuestionMark = '?';
 }

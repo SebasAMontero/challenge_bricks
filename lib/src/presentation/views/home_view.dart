@@ -49,7 +49,7 @@ class HomeView extends StatelessWidget {
                   width: containerProportionalWidth,
                   height: containerProportionalHeight,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 144, 97, 225),
+                    color: Colors.deepPurple.withOpacity(0.4),
                     border: Border.all(
                       color: Colors.black,
                       width: 1.0,
