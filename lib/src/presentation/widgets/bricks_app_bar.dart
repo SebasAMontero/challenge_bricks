@@ -42,7 +42,7 @@ class BricksAppBar extends StatelessWidget implements PreferredSizeWidget {
                     title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: BricksColors.border,
                       fontSize: Doubles.fontSizeHuge,
                       fontWeight: FontWeight.w600,
                     ),

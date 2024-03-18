@@ -9,7 +9,7 @@ import 'package:flutter/widgets.dart';
 Future<void> bootstrap(
   FutureOr<Widget> Function() builder, {
   String? hostUrl,
-  String? entorno,
+  String? environment,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterError.onError = (details) {

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/constants/assets.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_customer_form/bloc_customer_form.dart';
 import 'package:bricks_app_flutter/src/presentation/views/customer_form_view.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_general/bloc_general.dart';
@@ -39,7 +40,7 @@ class CustomerFormPage extends StatelessWidget {
           ),
           child: const CustomerFormView(),
         ),
-        backgroundColor: const Color.fromARGB(237, 241, 240, 240),
+        backgroundColor: BricksColors.backgroundColor,
       ),
     );
   }

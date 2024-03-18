@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/constants/assets.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_general/bloc_general.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             child: const HomeView()),
-        backgroundColor: const Color.fromARGB(237, 241, 240, 240),
+        backgroundColor: BricksColors.backgroundColor,
       ),
     );
   }
