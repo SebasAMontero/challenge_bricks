@@ -62,7 +62,10 @@ class HomeView extends StatelessWidget {
                             },
                           ),
                         ),
-                        const BricksHomePagination(),
+                        BricksHomePagination(
+                          currentPage: state.currentPage,
+                          numberOfPages: state.numberOfPages,
+                        ),
                       ],
                     ),
                   );

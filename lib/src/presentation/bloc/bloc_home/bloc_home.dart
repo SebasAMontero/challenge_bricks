@@ -3,6 +3,7 @@ import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
 import 'package:bricks_app_flutter/src/data/repositories/customer_repository.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
+import 'package:bricks_app_flutter/src/domain/models/page_customer/page_customer.dart';
 
 part 'bloc_home_state.dart';
 part 'bloc_home_event.dart';
@@ -16,15 +17,9 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     required this.customerRepository,
     required this.cityRepository,
   }) : super(const BlocHomeStateInitial()) {
-    on<BlocHomeEventInitialize>(
-      _initializeCustomers,
-    );
-    on<BlocHomeEventPreviousPage>(
-      _previousPage,
-    );
-    on<BlocHomeEventNextPage>(
-      _nextPage,
-    );
+    on<BlocHomeEventInitialize>(_initializeCustomers);
+    on<BlocHomeEventPreviousPage>(_previousPage);
+    on<BlocHomeEventNextPage>(_nextPage);
   }
 
   final CustomerRepository customerRepository;
@@ -39,10 +34,21 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
 
     try {
       final customerCount = await customerRepository.fetchCustomerCount();
+
       final numberOfPages = customerCount / Doubles.pageItemSize;
+
       final listCustomers = await customerRepository.fetchCustomersByPage(
         currentPage: state.currentPage,
       );
+
+      List<PageCustomer> listPageCustomer = [];
+
+      final pageCustomer = PageCustomer(
+        currentPage: state.currentPage,
+        listCustomers: listCustomers,
+      );
+
+      listPageCustomer.add(pageCustomer);
 
       emit(
         BlocHomeStateSuccess.from(
@@ -50,6 +56,7 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
           listCustomers: listCustomers,
           customerCount: customerCount,
           numberOfPages: numberOfPages,
+          listPageCustomer: listPageCustomer,
         ),
       );
     } catch (error) {
@@ -75,17 +82,42 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     }
 
     try {
-      final listCustomers = await customerRepository.fetchCustomersByPage(
-        currentPage: currentPage,
-      );
+      if (state.listPageCustomer
+          .any((pageCustomer) => pageCustomer.currentPage == currentPage)) {
+        final pageCustomer = state.listPageCustomer.firstWhere(
+            (pageCustomer) => pageCustomer.currentPage == currentPage);
 
-      emit(
-        BlocHomeStateSuccess.from(
-          state,
+        final custom = pageCustomer.listCustomers;
+        final page = pageCustomer.currentPage;
+        emit(
+          BlocHomeStateSuccess.from(
+            state,
+            currentPage: page,
+            listCustomers: custom,
+          ),
+        );
+      } else {
+        final listCustomers = await customerRepository.fetchCustomersByPage(
+          currentPage: currentPage,
+        );
+        List<PageCustomer> listPageCustomer = state.listPageCustomer;
+
+        final pageCustomer = PageCustomer(
           currentPage: currentPage,
           listCustomers: listCustomers,
-        ),
-      );
+        );
+
+        listPageCustomer.add(pageCustomer);
+
+        emit(
+          BlocHomeStateSuccess.from(
+            state,
+            currentPage: currentPage,
+            listCustomers: listCustomers,
+            listPageCustomer: listPageCustomer,
+          ),
+        );
+      }
     } catch (error) {
       emit(
         BlocHomeStateError.from(
@@ -108,17 +140,38 @@ class BlocHome extends Bloc<BlocHomeEvent, BlocHomeState> {
     currentPage++;
 
     try {
-      final listCustomers = await customerRepository.fetchCustomersByPage(
-        currentPage: currentPage,
-      );
+      if (state.listPageCustomer
+          .any((pageCustomer) => pageCustomer.currentPage == currentPage)) {
+        final pageCustomer = state.listPageCustomer.firstWhere(
+            (pageCustomer) => pageCustomer.currentPage == currentPage);
+        emit(
+          BlocHomeStateSuccess.from(
+            state,
+            currentPage: currentPage,
+            listCustomers: pageCustomer.listCustomers,
+          ),
+        );
+      } else {
+        final listCustomers = await customerRepository.fetchCustomersByPage(
+          currentPage: currentPage,
+        );
+        List<PageCustomer> listPageCustomer = state.listPageCustomer;
 
-      emit(
-        BlocHomeStateSuccess.from(
-          state,
+        final pageCustomer = PageCustomer(
           currentPage: currentPage,
           listCustomers: listCustomers,
-        ),
-      );
+        );
+
+        listPageCustomer.add(pageCustomer);
+        emit(
+          BlocHomeStateSuccess.from(
+            state,
+            currentPage: currentPage,
+            listCustomers: listCustomers,
+            listPageCustomer: listPageCustomer,
+          ),
+        );
+      }
     } catch (error) {
       emit(
         BlocHomeStateError.from(

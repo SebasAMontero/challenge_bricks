@@ -11,12 +11,15 @@ class BricksHomePagination extends StatelessWidget {
   /// {@macro BricksHomePagination}
   const BricksHomePagination({
     super.key,
+    required this.currentPage,
+    required this.numberOfPages,
   });
+
+  final int currentPage;
+  final double numberOfPages;
 
   @override
   Widget build(BuildContext context) {
-    final homeState = context.read<BlocHome>().state;
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -24,16 +27,16 @@ class BricksHomePagination extends StatelessWidget {
           icon: Icon(
             Icons.arrow_left,
             size: Doubles.iconSizeHuge,
-            color: (homeState.currentPage == 0) ? Colors.grey : Colors.white,
+            color: (currentPage == 0) ? Colors.grey : Colors.white,
           ),
-          onPressed: () => (homeState.currentPage == 0)
+          onPressed: () => (currentPage == 0)
               ? null
               : context.read<BlocHome>().add(
                     const BlocHomeEventPreviousPage(),
                   ),
         ),
         Text(
-          '${Strings.homeViewPageNumber}${homeState.currentPage}',
+          '${Strings.homeViewPageNumber}$currentPage',
           style: const TextStyle(
             fontSize: Doubles.fontSizeLarge,
             color: Colors.white,
@@ -43,11 +46,10 @@ class BricksHomePagination extends StatelessWidget {
           icon: Icon(
             Icons.arrow_right,
             size: Doubles.iconSizeHuge,
-            color: (homeState.numberOfPages - 1 > homeState.currentPage)
-                ? Colors.white
-                : Colors.grey,
+            color:
+                (numberOfPages - 1 > currentPage) ? Colors.white : Colors.grey,
           ),
-          onPressed: () => (homeState.numberOfPages - 1 > homeState.currentPage)
+          onPressed: () => (numberOfPages - 1 > currentPage)
               ? context.read<BlocHome>().add(
                     const BlocHomeEventNextPage(),
                   )
