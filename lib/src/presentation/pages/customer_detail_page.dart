@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/constants/assets.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_customer_detail/bloc_customer_detail.dart';
 import 'package:bricks_app_flutter/src/presentation/views/customer_detail_view.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_general/bloc_general.dart';
@@ -37,7 +38,7 @@ class CustomerDetailPage extends StatelessWidget {
           ),
         ),
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(237, 241, 240, 240),
+        backgroundColor: BricksColors.backgroundColor,
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(

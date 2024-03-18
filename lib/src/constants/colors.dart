@@ -20,5 +20,7 @@ class BricksColors {
 
   static const Color confirm = Colors.green;
 
-    static const Color buttonOrange = Colors.orange;
+  static const Color buttonOrange = Colors.orange;
+
+  static const Color backgroundColor = Color.fromARGB(237, 241, 240, 240);
 }
