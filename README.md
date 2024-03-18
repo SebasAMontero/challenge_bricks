@@ -13,7 +13,6 @@ A simple Customers App made by Flutter. The idea is see the list of customers, a
 
 # Instructions to run the apk:
 
-    Download the apk from this google.drive 
     Run the apk / If you are using an emulator, drag the file to the emulator.
     
 # Screenshots:
