@@ -23,4 +23,6 @@ class BricksColors {
   static const Color buttonOrange = Colors.orange;
 
   static const Color backgroundColor = Color.fromARGB(237, 241, 240, 240);
+
+  static const Color backgroundContainer = Color.fromARGB(255, 199, 199, 199);
 }
