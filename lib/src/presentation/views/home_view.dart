@@ -1,65 +1,82 @@
-import 'package:auto_route/auto_route.dart';
-
+import 'package:bricks_app_flutter/src/constants/colors.dart';
+import 'package:bricks_app_flutter/src/constants/doubles.dart';
+import 'package:bricks_app_flutter/src/constants/strings.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_customer_count.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/bricks_home_pagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
-import 'package:weather_app_flutter/src/presentation/bloc/bloc_login.dart';
+import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
+import 'package:bricks_app_flutter/src/presentation/widgets/customer_card.dart';
 
 /// {@template HomeView}
 /// View of the Home page.
 /// {@endtemplate}
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   /// {@macro HomeView}
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+  });
 
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BlocHome, BlocHomeState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        if (state is BlocHomeStateLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-
-        return SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20)
-                        .copyWith(right: 20),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: GestureDetector(
-                        onTap: () =>
-                            context.router.push(const CustomerFormRoute()),
-                        child: const Text(
-                          'Go to',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.amber,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
+    return SafeArea(
+      child: Column(
+        children: [
+          const BricksCustomerCount(),
+          Expanded(
+            child: BlocBuilder<BlocHome, BlocHomeState>(
+              builder: (context, state) {
+                if (state is BlocHomeStateLoadingPagination) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: BricksColors.themePurple,
+                    ),
+                  );
+                }
+                if (state is BlocHomeStateError) {
+                  return const Center(
+                    child: Text(
+                      Strings.errorFetchingData,
+                      style: TextStyle(
+                        fontSize: Doubles.fontSizeLarge,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  );
+                }
+                if (state is BlocHomeStateSuccess) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.listCustomers.length,
+                            itemBuilder: (context, index) {
+                              return CustomerCard(
+                                customer: state.listCustomers[index],
+                              );
+                            },
+                          ),
+                        ),
+                        BricksHomePagination(
+                          currentPage: state.currentPage,
+                          numberOfPages: state.numberOfPages,
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
