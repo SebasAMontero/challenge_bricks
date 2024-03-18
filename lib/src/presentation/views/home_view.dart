@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/presentation/widgets/bricks_customer_count.dart';
@@ -28,7 +29,7 @@ class HomeView extends StatelessWidget {
                 if (state is BlocHomeStateLoadingPagination) {
                   return const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.deepPurple,
+                      color: BricksColors.themePurple,
                     ),
                   );
                 }

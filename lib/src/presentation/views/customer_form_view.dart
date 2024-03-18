@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
@@ -101,7 +102,7 @@ class _CustomerFormViewState extends State<CustomerFormView> {
           if (state is BlocCustomerFormStateLoading) {
             return const Center(
               child: CircularProgressIndicator(
-                color: Colors.deepPurple,
+                color: BricksColors.themePurple,
               ),
             );
           }

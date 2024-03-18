@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class DeleteCustomerDialog extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.red,
+                color: BricksColors.cancel,
               ),
               child: TextButton(
                 onPressed: () {
@@ -60,7 +61,7 @@ class DeleteCustomerDialog extends StatelessWidget {
                 child: const Text(
                   Strings.commonCancel,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: BricksColors.whiteFont,
                     fontWeight: FontWeight.w500,
                     fontSize: Doubles.fontSizeLarge,
                   ),
@@ -69,7 +70,7 @@ class DeleteCustomerDialog extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: BricksColors.confirm,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextButton(
@@ -77,7 +78,7 @@ class DeleteCustomerDialog extends StatelessWidget {
                 child: const Text(
                   Strings.commonConfirm,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: BricksColors.whiteFont,
                     fontWeight: FontWeight.w500,
                     fontSize: Doubles.fontSizeLarge,
                   ),

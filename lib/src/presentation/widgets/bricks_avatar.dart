@@ -1,4 +1,5 @@
 import 'package:bricks_app_flutter/src/constants/assets.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 /// {@template BricksAvatar}
@@ -25,7 +26,7 @@ class BricksAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundColor: Colors.grey,
+      backgroundColor: BricksColors.disabled,
       child: ClipRRect(
         borderRadius: borderRadius,
         child: customerImageUrl != null

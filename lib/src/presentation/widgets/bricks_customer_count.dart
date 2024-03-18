@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
@@ -25,7 +26,7 @@ class BricksCustomerCount extends StatelessWidget {
         if (state is BlocHomeStateLoading) {
           return const Center(
             child: CircularProgressIndicator(
-              color: Colors.deepPurple,
+              color: BricksColors.themePurple,
             ),
           );
         }
@@ -33,9 +34,9 @@ class BricksCustomerCount extends StatelessWidget {
           width: containerProportionalWidth,
           height: containerProportionalHeight,
           decoration: BoxDecoration(
-            color: Colors.deepPurple.withOpacity(0.7),
+            color: BricksColors.backgroundCardsPurple.withOpacity(0.7),
             border: Border.all(
-              color: Colors.black,
+              color: BricksColors.border,
               width: 2.0,
             ),
           ),

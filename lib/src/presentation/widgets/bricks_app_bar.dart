@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bricks_app_flutter/src/constants/assets.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:flutter/material.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
@@ -53,7 +54,7 @@ class BricksAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onTap: () => context.router.push(const CustomerFormRoute()),
                     child: const Icon(
                       Icons.add_circle_outline,
-                      color: Colors.blue,
+                      color: BricksColors.iconAppBar,
                       size: Doubles.iconSizeBig,
                     ),
                   ),

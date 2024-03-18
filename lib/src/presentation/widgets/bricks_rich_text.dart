@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class BricksRichText extends StatelessWidget {
         text: TextSpan(
           style: const TextStyle(
             fontSize: Doubles.fontSizeMedium,
-            color: Colors.black,
+            color: BricksColors.border,
           ),
           children: [
             TextSpan(

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/core/routes/auto_route/auto_route.gr.dart';
 import 'package:bricks_app_flutter/src/domain/models/customer/customer.dart';
@@ -33,8 +34,11 @@ class CustomerCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
-          color: Colors.deepPurple.withOpacity(0.7),
-          border: Border.all(color: Colors.black, width: 2.0),
+          color: BricksColors.backgroundCardsPurple.withOpacity(0.7),
+          border: Border.all(
+            color: BricksColors.border,
+            width: 2.0,
+          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

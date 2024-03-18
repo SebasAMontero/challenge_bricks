@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/data/datasources/city_data_source.dart';
 import 'package:bricks_app_flutter/src/data/datasources/customer_data_source.dart';
 import 'package:bricks_app_flutter/src/data/repositories/city_repository.dart';
@@ -53,7 +54,9 @@ class _AppViewState extends State<AppView> {
       create: (context) => BlocGeneral(
         customerRepository: customerRepository,
         cityRepository: cityRepository,
-      )..add(BlocGeneralEventInitialize()),
+      )..add(
+          BlocGeneralEventInitialize(),
+        ),
       child: MaterialApp.router(
         color: const Color.fromARGB(255, 183, 183, 183),
         routerDelegate: AutoRouterDelegate(
@@ -61,7 +64,7 @@ class _AppViewState extends State<AppView> {
         ),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple,
+            seedColor: BricksColors.themePurple,
           ),
           useMaterial3: true,
         ),

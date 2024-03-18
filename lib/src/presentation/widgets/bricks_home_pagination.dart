@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:bricks_app_flutter/src/constants/strings.dart';
 import 'package:bricks_app_flutter/src/presentation/bloc/bloc_home/bloc_home.dart';
@@ -27,7 +28,9 @@ class BricksHomePagination extends StatelessWidget {
           icon: Icon(
             Icons.arrow_left,
             size: Doubles.iconSizeHuge,
-            color: (currentPage == 0) ? Colors.grey : Colors.white,
+            color: (currentPage == 0)
+                ? BricksColors.disabled
+                : BricksColors.whiteFont,
           ),
           onPressed: () => (currentPage == 0)
               ? null
@@ -39,15 +42,16 @@ class BricksHomePagination extends StatelessWidget {
           '${Strings.homeViewPageNumber}$currentPage',
           style: const TextStyle(
             fontSize: Doubles.fontSizeLarge,
-            color: Colors.white,
+            color: BricksColors.whiteFont,
           ),
         ),
         IconButton(
           icon: Icon(
             Icons.arrow_right,
             size: Doubles.iconSizeHuge,
-            color:
-                (numberOfPages - 1 > currentPage) ? Colors.white : Colors.grey,
+            color: (numberOfPages - 1 > currentPage)
+                ? BricksColors.whiteFont
+                : BricksColors.disabled,
           ),
           onPressed: () => (numberOfPages - 1 > currentPage)
               ? context.read<BlocHome>().add(

@@ -1,3 +1,4 @@
+import 'package:bricks_app_flutter/src/constants/colors.dart';
 import 'package:bricks_app_flutter/src/constants/doubles.dart';
 import 'package:flutter/material.dart';
 
@@ -27,11 +28,13 @@ class BricksButton extends StatelessWidget {
       onTap: isEnabled ? onTap : null,
       child: Container(
         decoration: BoxDecoration(
-          color: isEnabled ? Colors.orange.withOpacity(0.8) : Colors.grey,
+          color: isEnabled
+              ? BricksColors.buttonOrange.withOpacity(0.8)
+              : BricksColors.disabled,
           borderRadius: BorderRadius.circular(100),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.5),
+              color: BricksColors.border.withOpacity(0.5),
               spreadRadius: 4,
               blurRadius: 8,
               offset: const Offset(0, 2),
